@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=8 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -7,8 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
 [ext_resource type="Script" path="res://scenes/node_example.gd" id="3_a5686"]
 
+[sub_resource type="Environment" id="Environment_tjssu"]
+background_mode = 2
+ambient_light_color = Color(0.156863, 0.156863, 0.156863, 1)
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+
 [node name="IngameScene" type="Node2D"]
 script = ExtResource("1_objyc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tjssu")
 
 [node name="RoomScene" parent="." instance=ExtResource("2_bppc2")]
 
