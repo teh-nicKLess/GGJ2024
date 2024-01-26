@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=5 format=3 uid="uid://cnth0gfsj10u4"]
 
-[ext_resource type="PackedScene" uid="uid://u2kf12snb856" path="res://assets/models/room_base.glb" id="1_bm11y"]
+[ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
 [ext_resource type="Script" path="res://scenes/game/SpotLight.gd" id="2_bga4q"]
+[ext_resource type="Material" uid="uid://bhp8cc2yvf1yv" path="res://assets/models/room_base_mat.tres" id="2_ovjom"]
 [ext_resource type="Script" path="res://addons/Simple Free-Look Camera/camera.gd" id="3_7h5v2"]
 
 [node name="RoomScene" type="Node3D"]
 
 [node name="room_base2" parent="." instance=ExtResource("1_bm11y")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="room_base_applied" parent="room_base2" index="0"]
+material_override = ExtResource("2_ovjom")
 
 [node name="SpotLight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.2729, 0)
@@ -19,3 +23,5 @@ script = ExtResource("2_bga4q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181304, 1.15272, 0.726173)
 fov = 70.0
 script = ExtResource("3_7h5v2")
+
+[editable path="room_base2"]
