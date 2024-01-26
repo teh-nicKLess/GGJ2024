@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://bhp8cc2yvf1yv"]
+
+[ext_resource type="Texture2D" uid="uid://b3of0ah8t0tty" path="res://assets/models/room_base/room_base_DefaultMaterial_BaseColor.png" id="1_ln7m3"]
+[ext_resource type="Texture2D" uid="uid://cfanupvlbg5s5" path="res://assets/models/room_base/room_base_DefaultMaterial_AO.png" id="2_juwfb"]
+[ext_resource type="Texture2D" uid="uid://divrqchyjjptr" path="res://assets/models/room_base/room_base_DefaultMaterial_Height.exr" id="3_davvr"]
+[ext_resource type="Texture2D" uid="uid://hl2tij1c37sn" path="res://assets/models/room_base/room_base_DefaultMaterial_Metallic.png" id="4_1vrmr"]
+[ext_resource type="Texture2D" uid="uid://n14vpwoln66d" path="res://assets/models/room_base/room_base_DefaultMaterial_Normal.png" id="4_onhit"]
+[ext_resource type="Texture2D" uid="uid://b4agcd0iosuxp" path="res://assets/models/room_base/room_base_DefaultMaterial_Roughness.png" id="5_isyyv"]
+
+[resource]
+albedo_texture = ExtResource("1_ln7m3")
+metallic = 1.0
+metallic_texture = ExtResource("4_1vrmr")
+roughness_texture = ExtResource("5_isyyv")
+normal_enabled = true
+normal_texture = ExtResource("4_onhit")
+ao_enabled = true
+ao_texture = ExtResource("2_juwfb")
+heightmap_texture = ExtResource("3_davvr")
