@@ -21,6 +21,7 @@ func grab_button_focus() -> void:
 func _resume() -> void:
 	get_tree().paused = false
 	visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	
 func _settings() -> void:

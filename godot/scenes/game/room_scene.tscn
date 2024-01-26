@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnth0gfsj10u4"]
+
+[ext_resource type="PackedScene" uid="uid://u2kf12snb856" path="res://assets/models/room_base.glb" id="1_bm11y"]
+[ext_resource type="Script" path="res://plugins/Simple Free-Look Camera/camera.gd" id="2_qxg2q"]
+
+[sub_resource type="Environment" id="Environment_7rdfa"]
+background_mode = 2
+ambient_light_color = Color(0.156863, 0.156863, 0.156863, 1)
+tonemap_mode = 3
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+
+[node name="RoomScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7rdfa")
+
+[node name="room_base2" parent="." instance=ExtResource("1_bm11y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.2729, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181304, 1.15272, 0.726173)
+fov = 70.0
+script = ExtResource("2_qxg2q")
