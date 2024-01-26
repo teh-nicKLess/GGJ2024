@@ -1,2 +1,67 @@
 The Storybook Clownapped!
 
+1. Herausforderung:
+
+Items:
+Drei Holzklötze: Rund, Quadrat, Dreieck
+Holzkiste mit passenden Löchern.
+
+Clown:
+"Du bist ja soooo schlau, beweise es!"
+
+Aufgabe:
+Keine Zeitbeschränkung. Passende Löcher finden.
+
+Reaktion:
+Clown ist zufrieden und aktzeptiert Dich als "Spielpartner"
+
+2. Herausforderung
+
+Items:
+Rund, 2x Dreieck
+Kiste mit Rund, Dreieck, Stern
+
+Aufgabe:
+Zeitbeschänkung, kommuniziert durch Clown. 
+
+Trick:
+Dreieck passt in Stern Loch
+
+3. Herausforderung
+
+Items:
+Stern, Rund, Stern
+
+Aufgabe:
+Kiste mit Rund, Dreieck, Stern, Deckel ist lose.
+
+Trick:
+Deckel hochklappen/abmachen, Klötze verteilen
+
+
+4. Herausforderung
+
+Items:
+Stern, Rund, Dreieck
+
+Aufgabe:
+Kiste mit 3x Rund
+
+Trick:
+Clown zum Platzen bringen, druch schnelle Versuche die Klötzchen reinzudrücken
+
+
+Game-Logik:
+- Clown lacht immer wenn Kiste mit Steinen berührt wird, Lachen intensität ist proportional zu hits/time
+- Wenn Zeitlimit rum, dann tötet einen der Clown
+- Lösen eines Rästels (immer ein Klötz in jedem Loch) führt ins nächste Level: Licht aus, geräusche, Licht wieder an.
+- Wenn Level zu schnell gelöst, dann auch Game Over, Clown beschwert sich vorher, wenn zwei Steine korrekt in der Box sind es aber noch zu "früh" ist.
+- Spieler muss den richtigen Zeitpunkt aus den Clowns-Kommentaren rausfinden.
+- Im Letzten Level muss man den Clown nur noch zum Platzen bringen durch maximal hysterisches Lachen
+
+Clown:
+- Clown redet auf den Spieler ein, versucht ihn manchmal zu erschrecken "Buh!"
+- Clown beleidigt Spieler
+- Clown entschuldigt sich, das es nicht lösbar ist
+- Clown entschuldigt sich für die Fehler
+
