@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://cwhi26vfc38rv" path="res://assets/models/clown/hair_mat.tres" id="2_g5enx"]
 [ext_resource type="Material" uid="uid://dxunkk4iupnw4" path="res://assets/models/clown/body_mat.tres" id="3_s5x2p"]
 [ext_resource type="PackedScene" uid="uid://cq2f2tlspxiyq" path="res://assets/models/gun/gun.glb" id="4_hi0rm"]
-[ext_resource type="PackedScene" path="res://assets/models/simple_table/simple_table.tscn" id="5_2h2lc"]
+[ext_resource type="PackedScene" uid="uid://brhkh3yp2ot5l" path="res://assets/models/simple_table/simple_table.tscn" id="5_2h2lc"]
 
 [sub_resource type="Animation" id="Animation_32b3y"]
 length = 10.894
