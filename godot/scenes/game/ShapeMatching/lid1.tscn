@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://byirmnnn0xaqj"]
+[gd_scene load_steps=8 format=3 uid="uid://cbhx4s6msgu7l"]
 
 [ext_resource type="PackedScene" uid="uid://c8h8ooni0m11t" path="res://assets/models/shape_matching/lid01.glb" id="1_cioni"]
 [ext_resource type="Texture2D" uid="uid://bet0e7c5v6id8" path="res://assets/models/shape_matching/lid01_Material.034_BaseColor.png" id="2_002qi"]
@@ -14,11 +14,18 @@ roughness_texture = ExtResource("5_frtka")
 normal_enabled = true
 normal_texture = ExtResource("4_yxdje")
 
-[node name="Lid1" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_5luyy"]
+size = Vector3(6.20117, 0.237183, 1)
+
+[node name="RigidBody3D" type="RigidBody3D"]
 
 [node name="lid01" parent="." instance=ExtResource("1_cioni")]
 
 [node name="Lid_005" parent="lid01" index="0"]
 material_override = SubResource("StandardMaterial3D_bxk2h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135706, 0)
+shape = SubResource("BoxShape3D_5luyy")
 
 [editable path="lid01"]
