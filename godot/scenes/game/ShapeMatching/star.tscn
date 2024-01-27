@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://du12o8blj662d"]
+[gd_scene load_steps=8 format=3 uid="uid://dkmb6t3nfp563"]
 
 [ext_resource type="PackedScene" uid="uid://cq3gchdoqqdte" path="res://assets/models/shape_matching/star.glb" id="1_m1nqm"]
 [ext_resource type="Texture2D" uid="uid://b8qdq5gohkuh5" path="res://assets/models/shape_matching/star_Material.001_BaseColor.png" id="2_52cxx"]
@@ -14,11 +14,21 @@ roughness_texture = ExtResource("5_2h7tf")
 normal_enabled = true
 normal_texture = ExtResource("4_4o8cb")
 
-[node name="Star" type="Node3D"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8qhb0"]
+points = PackedVector3Array(0.517458, 0.467834, 0.298755, 0.517458, -0.467834, 0.298755, -0.000101328, 0.467834, -0.597509, -0.517458, 0.467834, 0.298755, -0.517458, -0.467834, 0.298755, -0.000101328, -0.467834, -0.597509)
+
+[node name="RigidBody3D" type="RigidBody3D"]
 
 [node name="star" parent="." instance=ExtResource("1_m1nqm")]
 
 [node name="Star_003" parent="star" index="0"]
 material_override = SubResource("StandardMaterial3D_8mf0x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_8qhb0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8qhb0")
 
 [editable path="star"]

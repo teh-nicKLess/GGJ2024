@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu4vjb6l4emx2"]
+[gd_scene load_steps=8 format=3 uid="uid://cn8tcbsea77n"]
 
 [ext_resource type="PackedScene" uid="uid://dn3jk25swpb1a" path="res://assets/models/shape_matching/cylinder.glb" id="1_dni00"]
 [ext_resource type="Texture2D" uid="uid://bhtjwbfgdlhkr" path="res://assets/models/shape_matching/cylinder_Material.002_BaseColor.png" id="2_johks"]
 [ext_resource type="Texture2D" uid="uid://bb14kbrwrixfl" path="res://assets/models/shape_matching/cylinder_Material.002_Metallic.png" id="3_5qgfu"]
 [ext_resource type="Texture2D" uid="uid://c4xph2vbstkd" path="res://assets/models/shape_matching/cylinder_Material.002_Normal.png" id="4_ryty8"]
 [ext_resource type="Texture2D" uid="uid://ch5gtegikordt" path="res://assets/models/shape_matching/cylinder_Material.002_Roughness.png" id="5_e1hpn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rwmoa"]
+points = PackedVector3Array(0.44254, 0.44254, -8.66354e-05, 0.433962, 0.44254, 0.08629, 0.44254, -0.44254, -8.66354e-05, 0.433962, 0.44254, -0.0863766, 0.433962, -0.44254, 0.08629, 0.408838, 0.44254, 0.169288, 0.433962, -0.44254, -0.0863766, 0.408838, 0.44254, -0.169374, 0.408838, -0.44254, 0.169288, 0.367945, 0.44254, 0.245788, 0.408838, -0.44254, -0.169374, 0.367945, 0.44254, -0.245875, 0.367945, -0.44254, 0.245788, 0.312845, 0.44254, 0.312845, 0.367945, -0.44254, -0.245875, 0.312845, 0.44254, -0.312931, 0.312845, -0.44254, 0.312845, 0.245788, 0.44254, 0.367945, 0.312845, -0.44254, -0.312931, 0.245788, 0.44254, -0.368032, 0.245788, -0.44254, 0.367945, 0.169288, 0.44254, 0.408838, 0.245788, -0.44254, -0.368032, 0.169288, 0.44254, -0.408925, 0.169288, -0.44254, 0.408838, 0.08629, 0.44254, 0.433962, 0.169288, -0.44254, -0.408925, 0.08629, 0.44254, -0.434049, 0.08629, -0.44254, 0.433962, -8.66354e-05, 0.44254, 0.44254, 0.08629, -0.44254, -0.434049, -8.66354e-05, 0.44254, -0.44254, -8.66354e-05, -0.44254, 0.44254, -0.0863766, 0.44254, 0.433962, -8.66354e-05, -0.44254, -0.44254, -0.0863766, 0.44254, -0.434049, -0.0863766, -0.44254, 0.433962, -0.169374, 0.44254, 0.408838, -0.0863766, -0.44254, -0.434049, -0.169374, 0.44254, -0.408925, -0.169374, -0.44254, 0.408838, -0.245875, 0.44254, 0.367945, -0.169374, -0.44254, -0.408925, -0.245875, 0.44254, -0.368032, -0.245875, -0.44254, 0.367945, -0.312931, 0.44254, 0.312845, -0.245875, -0.44254, -0.368032, -0.312931, 0.44254, -0.312931, -0.312931, -0.44254, 0.312845, -0.368032, 0.44254, 0.245788, -0.312931, -0.44254, -0.312931, -0.368032, 0.44254, -0.245875, -0.368032, -0.44254, 0.245788, -0.408925, 0.44254, 0.169288, -0.368032, -0.44254, -0.245875, -0.408925, 0.44254, -0.169374, -0.408925, -0.44254, 0.169288, -0.434049, 0.44254, 0.08629, -0.408925, -0.44254, -0.169374, -0.434049, 0.44254, -0.0863766, -0.434049, -0.44254, 0.08629, -0.44254, 0.44254, -8.66354e-05, -0.434049, -0.44254, -0.0863766, -0.44254, -0.44254, -8.66354e-05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wbji"]
 albedo_texture = ExtResource("2_johks")
@@ -14,7 +17,10 @@ roughness_texture = ExtResource("5_e1hpn")
 normal_enabled = true
 normal_texture = ExtResource("4_ryty8")
 
-[node name="Cylinder" type="Node3D"]
+[node name="RigidBody3D" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_rwmoa")
 
 [node name="cylinder" parent="." instance=ExtResource("1_dni00")]
 

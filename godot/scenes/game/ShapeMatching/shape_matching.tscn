@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scenes/game/ShapeMatching/shape_matching.gd" id="1_8ffwt"]
 [ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/lid1.tscn" id="1_jx6iu"]
-[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="2_f8qil"]
-[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/star.tscn" id="3_rlkfq"]
+[ext_resource type="PackedScene" uid="uid://brc02av2dbbff" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="2_f8qil"]
+[ext_resource type="PackedScene" uid="uid://dkmb6t3nfp563" path="res://scenes/game/ShapeMatching/star.tscn" id="3_rlkfq"]
 [ext_resource type="PackedScene" uid="uid://dg5p7aal641pg" path="res://scenes/game/ShapeMatching/triangle.tscn" id="4_0nfqv"]
-[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/cylinder.tscn" id="5_cgu33"]
+[ext_resource type="PackedScene" uid="uid://cn8tcbsea77n" path="res://scenes/game/ShapeMatching/cylinder.tscn" id="5_cgu33"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_04edl"]
 
