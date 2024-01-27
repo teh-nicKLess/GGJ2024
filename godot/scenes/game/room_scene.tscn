@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=6 format=3 uid="uid://cnth0gfsj10u4"]
 
+[ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
 [ext_resource type="PackedScene" uid="uid://djq65ic1pbyht" path="res://scenes/game/Lamp.tscn" id="2_6t3bl"]
 [ext_resource type="Script" path="res://addons/Simple Free-Look Camera/camera.gd" id="3_7h5v2"]
-[ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="3_8kyf3"]
 [ext_resource type="PackedScene" uid="uid://ckv6egn4bpuaa" path="res://assets/models/simple_table/simple_table.glb" id="3_pk725"]
+[ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
 
 [node name="RoomScene" type="Node3D"]
 
@@ -12,7 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.153, 0.726)
 fov = 70.0
 script = ExtResource("3_7h5v2")
 
-[node name="room_base" parent="." instance=ExtResource("3_8kyf3")]
+[node name="room_base" parent="." instance=ExtResource("1_bm11y")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="simple_table" parent="room_base" instance=ExtResource("3_pk725")]
@@ -27,3 +28,6 @@ node_b = NodePath("Lamp")
 
 [node name="Lamp" parent="room_base/Ceiling/JoltConeTwistJoint3D" instance=ExtResource("2_6t3bl")]
 transform = Transform3D(0.918839, 0.394632, 0, -0.394632, 0.918839, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="hobbyhorse" parent="." instance=ExtResource("5_umjxg")]
+transform = Transform3D(0.735932, 0, -0.677056, 0, 1, 0, 0.677056, 0, 0.735932, -1.21177, 5.96046e-08, -1.27076)
