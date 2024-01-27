@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://du12o8blj662d"]
+
+[ext_resource type="PackedScene" uid="uid://cq3gchdoqqdte" path="res://assets/models/shape_matching/star.glb" id="1_m1nqm"]
+[ext_resource type="Texture2D" uid="uid://b8qdq5gohkuh5" path="res://assets/models/shape_matching/star_Material.001_BaseColor.png" id="2_52cxx"]
+[ext_resource type="Texture2D" uid="uid://5emkch6kpk0j" path="res://assets/models/shape_matching/star_Material.001_Metallic.png" id="3_14su3"]
+[ext_resource type="Texture2D" uid="uid://dovogrbfyldmw" path="res://assets/models/shape_matching/star_Material.001_Normal.png" id="4_4o8cb"]
+[ext_resource type="Texture2D" uid="uid://fnlqk3ltxkv3" path="res://assets/models/shape_matching/star_Material.001_Roughness.png" id="5_2h7tf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8mf0x"]
+albedo_texture = ExtResource("2_52cxx")
+metallic = 1.0
+metallic_texture = ExtResource("3_14su3")
+roughness_texture = ExtResource("5_2h7tf")
+normal_enabled = true
+normal_texture = ExtResource("4_4o8cb")
+
+[node name="Star" type="Node3D"]
+
+[node name="star" parent="." instance=ExtResource("1_m1nqm")]
+
+[node name="Star_003" parent="star" index="0"]
+material_override = SubResource("StandardMaterial3D_8mf0x")
+
+[editable path="star"]

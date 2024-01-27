@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://f0qeluxfg2c0"]
+
+[ext_resource type="PackedScene" uid="uid://c8inxmr8wydyi" path="res://assets/models/shape_matching/box.glb" id="1_ygd5l"]
+[ext_resource type="Material" uid="uid://biv7tdd3fpv1p" path="res://assets/models/shape_matching/puzzle_box_mat.tres" id="2_28pp5"]
+
+[node name="PuzzleBox" type="Node3D"]
+
+[node name="box" parent="." instance=ExtResource("1_ygd5l")]
+
+[node name="Box_001" parent="box" index="0"]
+material_override = ExtResource("2_28pp5")
+
+[editable path="box"]

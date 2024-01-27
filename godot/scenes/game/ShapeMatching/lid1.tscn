@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://byirmnnn0xaqj"]
+
+[ext_resource type="PackedScene" uid="uid://c8h8ooni0m11t" path="res://assets/models/shape_matching/lid01.glb" id="1_cioni"]
+[ext_resource type="Texture2D" uid="uid://bet0e7c5v6id8" path="res://assets/models/shape_matching/lid01_Material.034_BaseColor.png" id="2_002qi"]
+[ext_resource type="Texture2D" uid="uid://d0ps4njxitot" path="res://assets/models/shape_matching/lid01_Material.034_Metallic.png" id="3_oweqx"]
+[ext_resource type="Texture2D" uid="uid://dc6uw6phbfl73" path="res://assets/models/shape_matching/lid01_Material.034_Normal.png" id="4_yxdje"]
+[ext_resource type="Texture2D" uid="uid://b18kb8q5fri5t" path="res://assets/models/shape_matching/lid01_Material.034_Roughness.png" id="5_frtka"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxk2h"]
+albedo_texture = ExtResource("2_002qi")
+metallic = 1.0
+metallic_texture = ExtResource("3_oweqx")
+roughness_texture = ExtResource("5_frtka")
+normal_enabled = true
+normal_texture = ExtResource("4_yxdje")
+
+[node name="Lid1" type="Node3D"]
+
+[node name="lid01" parent="." instance=ExtResource("1_cioni")]
+
+[node name="Lid_005" parent="lid01" index="0"]
+material_override = SubResource("StandardMaterial3D_bxk2h")
+
+[editable path="lid01"]
