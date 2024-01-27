@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=8 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
 [ext_resource type="PackedScene" uid="uid://djq65ic1pbyht" path="res://scenes/game/Lamp.tscn" id="2_6t3bl"]
+[ext_resource type="Material" uid="uid://bhp8cc2yvf1yv" path="res://assets/models/room_base/room_base_mat.tres" id="3_7em1d"]
 [ext_resource type="Script" path="res://addons/Simple Free-Look Camera/camera.gd" id="3_7h5v2"]
 [ext_resource type="PackedScene" uid="uid://ckv6egn4bpuaa" path="res://assets/models/simple_table/simple_table.glb" id="3_pk725"]
 [ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
@@ -16,6 +17,9 @@ script = ExtResource("3_7h5v2")
 
 [node name="room_base" parent="." instance=ExtResource("1_bm11y")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="room_base_applied" parent="room_base" index="0"]
+material_override = ExtResource("3_7em1d")
 
 [node name="simple_table" parent="room_base" instance=ExtResource("3_pk725")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.147303, 0, -0.0586552)
@@ -35,3 +39,5 @@ transform = Transform3D(0.735932, 0, -0.677056, 0, 1, 0, 0.677056, 0, 0.735932, 
 
 [node name="box" parent="." instance=ExtResource("6_gt76u")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.0799305, 0.803883, 0.410189)
+
+[editable path="room_base"]
