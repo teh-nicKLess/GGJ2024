@@ -35,6 +35,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_64sbw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4prun"]
+metallic = 1.0
+roughness = 0.4
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wcu5h"]
 _surfaces = [{
@@ -109,6 +111,7 @@ height = 0.0773619
 radius = 0.200031
 
 [node name="Lamp" type="RigidBody3D"]
+angular_damp = 5.0
 
 [node name="Cable" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
@@ -129,6 +132,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.336627, 0)
 shape = SubResource("CylinderShape3D_4gwam")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.2509, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.239898, 0)
+light_color = Color(1, 0.909804, 0.85098, 1)
 shadow_enabled = true
-spot_angle = 55.0
+spot_angle = 44.72
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.296831, 0)
+light_color = Color(1, 0.909804, 0.85098, 1)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 0.25
+omni_attenuation = 0.6

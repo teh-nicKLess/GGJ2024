@@ -1,28 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnth0gfsj10u4"]
 
-
-[ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
-[ext_resource type="Script" path="res://scenes/game/SpotLight.gd" id="2_bga4q"]
-[ext_resource type="Material" uid="uid://bhp8cc2yvf1yv" path="res://assets/models/room_base_mat.tres" id="2_ovjom"]
- type="Script" path="res://addons/Simple Free-Look Camera/camera.gd" id="3_7h5v2"]
+[ext_resource type="PackedScene" uid="uid://djq65ic1pbyht" path="res://scenes/game/Lamp.tscn" id="2_6t3bl"]
+[ext_resource type="Script" path="res://addons/Simple Free-Look Camera/camera.gd" id="3_7h5v2"]
+[ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="3_8kyf3"]
+[ext_resource type="PackedScene" uid="uid://ckv6egn4bpuaa" path="res://assets/models/simple_table/simple_table.glb" id="3_pk725"]
 
 [node name="RoomScene" type="Node3D"]
 
-[node name="room_base2" parent="." instance=ExtResource("1_bm11y")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="room_base_applied" parent="room_base2" index="0"]
-material_override = ExtResource("2_ovjom")
-
-[node name="SpotLight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.2729, 0)
-light_color = Color(1, 0.901961, 0.780392, 1)
-shadow_enabled = true
-script = ExtResource("2_bga4q")
-
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181304, 1.15272, 0.726173)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.153, 0.726)
 fov = 70.0
 script = ExtResource("3_7h5v2")
 
-[editable path="room_base2"]
+[node name="room_base" parent="." instance=ExtResource("3_8kyf3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="simple_table" parent="room_base" instance=ExtResource("3_pk725")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.147303, 0, -0.0586552)
+
+[node name="Ceiling" type="StaticBody3D" parent="room_base"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.5, 0)
+
+[node name="JoltConeTwistJoint3D" type="JoltConeTwistJoint3D" parent="room_base/Ceiling"]
+node_a = NodePath("..")
+node_b = NodePath("Lamp")
+
+[node name="Lamp" parent="room_base/Ceiling/JoltConeTwistJoint3D" instance=ExtResource("2_6t3bl")]
+transform = Transform3D(0.918839, 0.394632, 0, -0.394632, 0.918839, 0, 0, 0, 1, 0, 0, 0)
