@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg5p7aal641pg"]
+
+[ext_resource type="PackedScene" uid="uid://bx7d6yvn26m5x" path="res://assets/models/shape_matching/triangle.glb" id="1_ohg3q"]
+[ext_resource type="Texture2D" uid="uid://ckjaoxok311e2" path="res://assets/models/shape_matching/triangle_Material.008_BaseColor.png" id="2_y8aih"]
+[ext_resource type="Texture2D" uid="uid://b2nw32rp250qv" path="res://assets/models/shape_matching/triangle_Material.008_Metallic.png" id="3_iyphm"]
+[ext_resource type="Texture2D" uid="uid://dqmwx0w4g34xf" path="res://assets/models/shape_matching/triangle_Material.008_Normal.png" id="4_5ir5q"]
+[ext_resource type="Texture2D" uid="uid://dw54mt84bsvxy" path="res://assets/models/shape_matching/triangle_Material.008_Roughness.png" id="5_u78xe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_asx2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7pab"]
+albedo_texture = ExtResource("2_y8aih")
+metallic = 1.0
+metallic_texture = ExtResource("3_iyphm")
+roughness_texture = ExtResource("5_u78xe")
+normal_enabled = true
+normal_texture = ExtResource("4_5ir5q")
+
+[node name="RigidBody3D" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_asx2b")
+
+[node name="triangle" parent="CollisionShape3D" instance=ExtResource("1_ohg3q")]
+
+[node name="Triangle_003" parent="CollisionShape3D/triangle" index="0"]
+material_override = SubResource("StandardMaterial3D_o7pab")
+
+[editable path="CollisionShape3D/triangle"]

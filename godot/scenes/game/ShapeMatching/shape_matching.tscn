@@ -1,12 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://dee3m2coregme"]
+[gd_scene load_steps=8 format=3 uid="uid://dee3m2coregme"]
 
-[ext_resource type="PackedScene" uid="uid://c8inxmr8wydyi" path="res://assets/models/shape_matching/box.glb" id="1_g8xq4"]
-[ext_resource type="PackedScene" uid="uid://dn4h1fkholod5" path="res://scenes/game/ShapeMatching/cube.tscn" id="2_3hi5f"]
+[ext_resource type="Script" path="res://scenes/game/ShapeMatching/shape_matching.gd" id="1_8ffwt"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/lid1.tscn" id="1_jx6iu"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="2_f8qil"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/star.tscn" id="3_rlkfq"]
+[ext_resource type="PackedScene" uid="uid://dg5p7aal641pg" path="res://scenes/game/ShapeMatching/triangle.tscn" id="4_0nfqv"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/cylinder.tscn" id="5_cgu33"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04edl"]
 
 [node name="ShapeMatching" type="Node3D"]
+script = ExtResource("1_8ffwt")
 
-[node name="box" parent="." instance=ExtResource("1_g8xq4")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+[node name="Lid1" parent="." instance=ExtResource("1_jx6iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803933, 0)
+visible = false
 
-[node name="Block" parent="." instance=ExtResource("2_3hi5f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779611, 0.115656)
+[node name="PuzzleBox" parent="." instance=ExtResource("2_f8qil")]
+
+[node name="Area3D" type="Area3D" parent="PuzzleBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_04edl")
+
+[node name="Area3D2" type="Area3D" parent="PuzzleBox"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_04edl")
+
+[node name="Area3D3" type="Area3D" parent="PuzzleBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_04edl")
+
+[node name="Star" parent="." instance=ExtResource("3_rlkfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97529, 2.09281, 0)
+
+[node name="Triangle" parent="." instance=ExtResource("4_0nfqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1446, 2.09281, -0.0122321)
+
+[node name="Cylinder" parent="." instance=ExtResource("5_cgu33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109763, 2.09281, -0.0122321)
+
+[connection signal="body_entered" from="PuzzleBox/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="PuzzleBox/Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_entered" from="PuzzleBox/Area3D3" to="." method="_on_area_3d_3_body_entered"]
