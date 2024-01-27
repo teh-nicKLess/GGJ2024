@@ -17,8 +17,8 @@ ssao_radius = 3.86
 ssao_intensity = 3.49
 sdfgi_use_occlusion = true
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.15
-volumetric_fog_albedo = Color(0.498039, 0.541176, 0.556863, 1)
+volumetric_fog_density = 0.3
+volumetric_fog_albedo = Color(0.65098, 0.580392, 0.505882, 1)
 
 [sub_resource type="Curve" id="Curve_sjcor"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.260331, 1), 0.0, 0.0, 0, 0, Vector2(0.780992, 1), 0.0, 0.0, 0, 0, Vector2(0.991736, 0), 0.0, 0.0, 0, 0]

@@ -18,6 +18,7 @@ var grabbed_object : RigidBody3D = null
 var rotating_grabbed := false
 var object_dist_min = 0.3
 var object_dist_max = 2.0
+var object_rotation_speed = 0.02
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -110,7 +111,9 @@ func _update_grabbed_position(delta):
 
 
 func _rotate_grabbed():
-	pass
+	grabbed_object.rotate_x(_mouse_position.y * object_rotation_speed)
+	grabbed_object.rotate_object_local(Vector3(0,0,1), _mouse_position.x * object_rotation_speed)
+	_mouse_position = Vector2(0, 0)
 
 
 func _pull_grabbed():
