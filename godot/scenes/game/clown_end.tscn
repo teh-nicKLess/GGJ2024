@@ -1,0 +1,138 @@
+[gd_scene load_steps=13 format=3 uid="uid://h3gltiwq4elo"]
+
+[ext_resource type="PackedScene" uid="uid://cql8l2tyljwan" path="res://assets/models/clown/clown.glb" id="1_g7wus"]
+[ext_resource type="Material" uid="uid://cwhi26vfc38rv" path="res://assets/models/clown/hair_mat.tres" id="2_g5enx"]
+[ext_resource type="Material" uid="uid://dxunkk4iupnw4" path="res://assets/models/clown/body_mat.tres" id="3_s5x2p"]
+[ext_resource type="PackedScene" uid="uid://cq2f2tlspxiyq" path="res://assets/models/gun/gun.glb" id="4_hi0rm"]
+[ext_resource type="PackedScene" path="res://assets/models/simple_table/simple_table.tscn" id="5_2h2lc"]
+
+[sub_resource type="Animation" id="Animation_32b3y"]
+length = 10.894
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.894)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.894)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.894)
+}
+
+[sub_resource type="Animation" id="Animation_63kvr"]
+resource_name = "blood_pool"
+length = 9.9895
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.43, -0.25, 0, 0.25, 0, 0.91, -0.25, 0, 0.25, 0, 0.645, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 9.9895, 10)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 9.9895, 10)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.305, -0.25, 0, 0.25, 0, 0.695, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 9.9895, 10)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ju76e"]
+_data = {
+"RESET": SubResource("Animation_32b3y"),
+"blood_pool": SubResource("Animation_63kvr")
+}
+
+[sub_resource type="Gradient" id="Gradient_huam6"]
+offsets = PackedFloat32Array(0.974138, 1)
+colors = PackedColorArray(0.474797, 2.34036e-06, 3.85046e-07, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_71ura"]
+gradient = SubResource("Gradient_huam6")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.504274, 0.474359)
+fill_to = Vector2(0.5, 0.0512821)
+
+[sub_resource type="Gradient" id="Gradient_3shj6"]
+interpolation_mode = 1
+colors = PackedColorArray(0.151276, 0.151276, 0.151276, 1, 0.125911, 0.125911, 0.125911, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lyw2s"]
+gradient = SubResource("Gradient_3shj6")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+
+[node name="clown_end" type="Node3D"]
+
+[node name="clown" parent="." instance=ExtResource("1_g7wus")]
+
+[node name="hair_fur" parent="clown" index="0"]
+transform = Transform3D(-0.00510651, 0.000922933, 0.00236128, 0.000289968, -0.00506255, 0.00260584, 0.00251861, 0.00245411, 0.00448752, -0.140582, 0.839756, -0.159541)
+material_override = ExtResource("2_g5enx")
+
+[node name="body_001" parent="clown" index="1"]
+transform = Transform3D(-9.27493e-10, 0.0212186, 0, 0, 0, -0.0212186, -0.0212186, -9.27493e-10, 0, -0.561708, -0.393698, -0.0557377)
+material_override = ExtResource("3_s5x2p")
+
+[node name="gun" parent="." instance=ExtResource("4_hi0rm")]
+transform = Transform3D(-0.0827217, 0.0853368, -0.693828, 0.0477528, -0.696348, -0.0913399, -0.697424, -0.0578009, 0.0760412, -0.16637, 0.72015, -0.278579)
+
+[node name="simple_table" parent="." instance=ExtResource("5_2h2lc")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../blood_decal")
+libraries = {
+"": SubResource("AnimationLibrary_ju76e")
+}
+
+[node name="blood_decal" type="Decal" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 0.3, -0.179312, 0.683326, 0.0128077)
+size = Vector3(0.465332, 0.0299439, 0.606308)
+texture_albedo = SubResource("GradientTexture2D_71ura")
+texture_orm = SubResource("GradientTexture2D_lyw2s")
+
+[editable path="clown"]
