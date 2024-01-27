@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvssbxssd3kk4"]
+
+[ext_resource type="Script" path="res://scenes/player_controller.gd" id="1_u4f05"]
+[ext_resource type="Texture2D" uid="uid://bhwkhp1fdqxr3" path="res://assets/2d/dust_particle.png" id="2_evxpd"]
+
+[node name="PlayerController" type="Node3D"]
+script = ExtResource("1_u4f05")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.153, 1.11297)
+fov = 70.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="AimDot" type="Sprite3D" parent="Camera3D/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.31161, 0)
+gi_mode = 0
+modulate = Color(1, 0, 0, 1)
+pixel_size = 0.0002
+texture = ExtResource("2_evxpd")
+
+[node name="ObjectTarget" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)

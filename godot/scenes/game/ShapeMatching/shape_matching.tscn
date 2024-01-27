@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dee3m2coregme"]
+
+[ext_resource type="PackedScene" uid="uid://c8inxmr8wydyi" path="res://assets/models/shape_matching/box.glb" id="1_g8xq4"]
+[ext_resource type="PackedScene" uid="uid://dn4h1fkholod5" path="res://scenes/game/ShapeMatching/cube.tscn" id="2_3hi5f"]
+
+[node name="ShapeMatching" type="Node3D"]
+
+[node name="box" parent="." instance=ExtResource("1_g8xq4")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="Block" parent="." instance=ExtResource("2_3hi5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779611, 0.115656)

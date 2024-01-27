@@ -2,17 +2,16 @@
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
-[ext_resource type="Script" path="res://addons/Simple Free-Look Camera/camera.gd" id="2_48bbp"]
 [ext_resource type="PackedScene" uid="uid://cnth0gfsj10u4" path="res://scenes/game/room_scene.tscn" id="2_bppc2"]
+[ext_resource type="PackedScene" uid="uid://bvssbxssd3kk4" path="res://scenes/player_controller.tscn" id="2_hckl8"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
 [ext_resource type="Script" path="res://scenes/node_example.gd" id="3_a5686"]
-[ext_resource type="Texture2D" uid="uid://bhwkhp1fdqxr3" path="res://assets/2d/dust_particle-3.png" id="3_wvv2r"]
+[ext_resource type="Texture2D" uid="uid://bhwkhp1fdqxr3" path="res://assets/2d/dust_particle.png" id="3_wvv2r"]
 
 [sub_resource type="Environment" id="Environment_tjssu"]
 background_mode = 2
 ambient_light_color = Color(0.156863, 0.156863, 0.156863, 1)
-tonemap_mode = 2
-tonemap_exposure = 2.0
+tonemap_mode = 3
 ssao_enabled = true
 ssao_radius = 3.86
 ssao_intensity = 3.49
@@ -39,19 +38,17 @@ scale_curve = SubResource("CurveTexture_dfifl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fax2"]
 transparency = 1
+albedo_color = Color(1, 1, 1, 0.588235)
 albedo_texture = ExtResource("3_wvv2r")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wqmn2"]
 material = SubResource("StandardMaterial3D_3fax2")
-size = Vector2(0.005, 0.005)
+size = Vector2(0.01, 0.01)
 
 [node name="IngameScene" type="Node2D"]
 script = ExtResource("1_objyc")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.153, 1.11297)
-fov = 70.0
-script = ExtResource("2_48bbp")
+[node name="PlayerController" parent="." instance=ExtResource("2_hckl8")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tjssu")
@@ -60,6 +57,7 @@ environment = SubResource("Environment_tjssu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 amount = 800
 lifetime = 2.0
+randomness = 0.25
 visibility_aabb = AABB(-2.25, -1.2725, -2.25, 4.5, 2.14499, 4.5)
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_77itt")
