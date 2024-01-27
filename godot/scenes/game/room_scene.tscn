@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=15 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="Script" path="res://scenes/game/room_scene.gd" id="1_22d2t"]
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dee3m2coregme" path="res://scenes/game/ShapeMatching/shape_matching.tscn" id="9_7jt25"]
 [ext_resource type="Material" uid="uid://wbxo21w6ylv3" path="res://assets/models/door/door_mat.tres" id="9_yrkcg"]
 [ext_resource type="Script" path="res://scenes/game/ClownControl.gd" id="10_qo6ab"]
+[ext_resource type="PackedScene" uid="uid://68etf3dwhwqj" path="res://assets/models/chair/painted_wooden_chair_01_2k.glb" id="11_4r557"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 
@@ -72,7 +73,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.532, 0, 0)
 
 [node name="Ceiling" type="StaticBody3D" parent="room_base"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.73833, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.111, 0)
 
 [node name="JoltConeTwistJoint3D" type="JoltConeTwistJoint3D" parent="room_base/Ceiling"]
 node_a = NodePath("..")
@@ -117,6 +118,9 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 0.243137, 0.188235, 1)
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="painted_wooden_chair_01_2k" parent="." instance=ExtResource("11_4r557")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00398584, 0, 1.14554)
 
 [connection signal="action_triggered" from="ClownControl" to="." method="_on_clown_control_action_triggered"]
 
