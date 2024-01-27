@@ -1,23 +1,21 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4blrdjthcxnn"]
 
-[ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="1_scjn5"]
+[ext_resource type="Texture2D" uid="uid://cq6npni2qr82i" path="res://assets/2d/game_logo.png" id="1_e5mlx"]
 
 [node name="GameLogo" type="CenterContainer"]
 offset_right = 128.0
 offset_bottom = 128.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 148.0
-offset_bottom = 148.0
+layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 138.0
-offset_bottom = 138.0
-texture = ExtResource("1_scjn5")
-stretch_mode = 2
+custom_minimum_size = Vector2(250, 45.79)
+layout_mode = 2
+texture = ExtResource("1_e5mlx")
+expand_mode = 2
+stretch_mode = 4
