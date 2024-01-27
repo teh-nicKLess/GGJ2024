@@ -95,7 +95,7 @@ transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1.01619, 0
 material_override = ExtResource("9_yrkcg")
 
 [node name="ShapeMatching" parent="." instance=ExtResource("9_7jt25")]
-transform = Transform3D(1.00785, 0, 0, 0, 1.00785, 0, 0, 0, 1.04277, 0, 0.753968, 0.517744)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.052, 0, 0.753968, 0.517744)
 
 [node name="ClownControl" type="CanvasLayer" parent="."]
 script = ExtResource("10_qo6ab")

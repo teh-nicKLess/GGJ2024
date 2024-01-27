@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dee3m2coregme"]
 
-[ext_resource type="PackedScene" uid="uid://byirmnnn0xaqj" path="res://scenes/game/ShapeMatching/lid1.tscn" id="1_jx6iu"]
-[ext_resource type="PackedScene" uid="uid://f0qeluxfg2c0" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="2_f8qil"]
-[ext_resource type="PackedScene" uid="uid://du12o8blj662d" path="res://scenes/game/ShapeMatching/star.tscn" id="3_rlkfq"]
-[ext_resource type="PackedScene" uid="uid://uvpekpmwqjib" path="res://scenes/game/ShapeMatching/triangle.tscn" id="4_0nfqv"]
-[ext_resource type="PackedScene" uid="uid://cu4vjb6l4emx2" path="res://scenes/game/ShapeMatching/cylinder.tscn" id="5_cgu33"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/lid1.tscn" id="1_jx6iu"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="2_f8qil"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/star.tscn" id="3_rlkfq"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/triangle.tscn" id="4_0nfqv"]
+[ext_resource type="PackedScene" path="res://scenes/game/ShapeMatching/cylinder.tscn" id="5_cgu33"]
 
 [node name="ShapeMatching" type="Node3D"]
 
