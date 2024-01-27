@@ -18,6 +18,8 @@ normal_texture = ExtResource("4_5ir5q")
 points = PackedVector3Array(0.517458, 0.467834, 0.298755, 0.517458, -0.467834, 0.298755, -0.000101328, 0.467834, -0.597509, -0.517458, 0.467834, 0.298755, -0.517458, -0.467834, 0.298755, -0.000101328, -0.467834, -0.597509)
 
 [node name="RigidBody3D" type="RigidBody3D"]
+mass = 0.05
+continuous_cd = true
 
 [node name="triangle" parent="." instance=ExtResource("1_ohg3q")]
 

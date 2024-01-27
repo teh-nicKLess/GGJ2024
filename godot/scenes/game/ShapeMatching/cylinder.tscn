@@ -18,6 +18,8 @@ normal_enabled = true
 normal_texture = ExtResource("4_ryty8")
 
 [node name="RigidBody3D" type="RigidBody3D"]
+mass = 0.05
+continuous_cd = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_rwmoa")

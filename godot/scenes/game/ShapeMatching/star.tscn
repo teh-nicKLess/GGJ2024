@@ -18,6 +18,8 @@ normal_texture = ExtResource("4_4o8cb")
 points = PackedVector3Array(0.517458, 0.467834, 0.298755, 0.517458, -0.467834, 0.298755, -0.000101328, 0.467834, -0.597509, -0.517458, 0.467834, 0.298755, -0.517458, -0.467834, 0.298755, -0.000101328, -0.467834, -0.597509)
 
 [node name="RigidBody3D" type="RigidBody3D"]
+mass = 0.05
+continuous_cd = true
 
 [node name="star" parent="." instance=ExtResource("1_m1nqm")]
 
