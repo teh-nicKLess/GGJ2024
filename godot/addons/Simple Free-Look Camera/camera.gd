@@ -6,6 +6,8 @@ const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
 
 
 @export_range(0.0, 1.0) var sensitivity: float = 0.25
+@export_range(0, 90) var left_view_bound: int = 45
+@export_range(0, 90) var right_view_bound: int = 45
 
 # Mouse state
 var _mouse_position = Vector2(0.0, 0.0)
@@ -82,8 +84,8 @@ func _update_mouselook():
 		_mouse_position = Vector2(0, 0)
 		
 		# Prevents looking up/down too far
-		pitch = clamp(pitch, -70 - _total_pitch, 60 - _total_pitch)
-		yaw = clamp(yaw, -70 - _total_yaw, 60 - _total_yaw)
+		pitch = clamp(pitch, -60 - _total_pitch, 60 - _total_pitch)
+		yaw = clamp(yaw, - left_view_bound - _total_yaw, right_view_bound - _total_yaw)
 
 		_total_pitch += pitch
 		_total_yaw += yaw

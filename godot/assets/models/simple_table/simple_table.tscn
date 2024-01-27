@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://brhkh3yp2ot5l"]
+
+[ext_resource type="PackedScene" uid="uid://ckv6egn4bpuaa" path="res://assets/models/simple_table/simple_table.glb" id="1_ujfk4"]
+[ext_resource type="Material" uid="uid://c0djk54dcpbb5" path="res://assets/models/simple_table/scratched_steel.tres" id="2_v3tt1"]
+
+[node name="simple_table" instance=ExtResource("1_ujfk4")]
+
+[node name="Table" parent="." index="0"]
+material_override = ExtResource("2_v3tt1")

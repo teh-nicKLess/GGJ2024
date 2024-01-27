@@ -132,15 +132,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.336627, 0)
 shape = SubResource("CylinderShape3D_4gwam")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.239898, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.259439, 0)
 light_color = Color(1, 0.909804, 0.85098, 1)
 shadow_enabled = true
-spot_angle = 44.72
+spot_angle = 58.96
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.296831, 0)
 light_color = Color(1, 0.909804, 0.85098, 1)
 light_energy = 0.5
 shadow_enabled = true
-omni_range = 0.25
+omni_range = 0.22
 omni_attenuation = 0.6
