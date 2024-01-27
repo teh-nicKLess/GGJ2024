@@ -1,0 +1,22 @@
+
+Clown-Controller:
+
+Logik für Agitation einbauen
+Signals für Kill einbauen
+Audio-Play der Texte
+
+Game:
+implement triggers for
+- continue_level_0
+- prepare_level_0
+- random_talk
+- timeout_kill
+- box_hit
+- one_solved
+- fallen_item
+- double_fill
+- level_0_finished
+- level_1_finished
+- level_2_finished
+- level_3_finished
+

@@ -1,11 +1,18 @@
 extends CanvasLayer
 
+signal action_triggered(action:String)
+
 @onready var subtitles: Label = $MarginContainer/Subtitles
 @onready var debug: Label = $MarginContainer/Debug
+
+const BOX_HIT_COOLDOWN := 0.1 # cooldown factor per second
+const AGITATION_FACTOR := 0.1 # higher means clows is agitated quicker
+
 
 var ctrl
 var agitation_level := 0 # can be 0,1,2
 var solved_blocks_count := 0 # can be 0,1,2
+var box_hit_count := 0.0 # counts the hits of blocks to the box while trying to fit them
 var expected_solving_time := 0 # in seconds
 var level_timer := 0.0
 var is_timing_out := false
@@ -26,6 +33,11 @@ func _process(delta: float) -> void:
     level_timer += delta
     is_timing_out = level_timer >= expected_solving_time
     expected_solved_count = level_timer / (expected_solving_time / 3)
+    if box_hit_count > 0:
+        box_hit_count -= (BOX_HIT_COOLDOWN * delta)
+    agitation_level = round(box_hit_count * AGITATION_FACTOR)
+    if agitation_level > 2:
+        agitation_level = 2
 
     # update debug-panel
     debug.text = "lt=" + str(int(level_timer)) + \
@@ -64,12 +76,6 @@ func reset_level(expected_solving_time: int):
     self.expected_solving_time = expected_solving_time
     level_timer = 0
 
-func set_agitation_level(level: int):
-    agitation_level = level
-
-func set_solved_blocks_count(count: int):
-    solved_blocks_count = count
-
 func trigger_at(time: float, action: String):
     trigger_queue.append([time, action])
 
@@ -77,6 +83,12 @@ func trigger(action: String) -> void:
     # display event in debug for 1 sec
     debug_action = action
     debug_action_timeout = level_timer + 1.0
+
+    # handle special actions
+    if action == "box_hit":
+        box_hit_count += 1
+    elif action == "one_solved":
+        solved_blocks_count += 1
 
     # find text
     var matching_rules = []
@@ -128,5 +140,5 @@ func play_and_show(text: String):
 
 func call_trigger(action):
     trigger(action)
-    pass
+    emit_signal("action_triggered", action)
 
