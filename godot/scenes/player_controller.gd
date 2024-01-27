@@ -49,11 +49,15 @@ func _input(event):
 
 # Updates mouselook and movement every frame
 func _process(delta):
+	if not rotating_grabbed:
+		_update_mouselook()
+		_update_aim_dot()
+
+
+func _physics_process(delta):
 	if rotating_grabbed:
 		_rotate_grabbed()
 	else:
-		_update_mouselook()
-		_update_aim_dot()
 		if grabbed_object:
 			_update_grabbed_position(delta)
 
@@ -97,22 +101,23 @@ func _grab_object():
 	var object = raycast.get_collider()
 	if object and object is RigidBody3D:
 		grabbed_object = object
-		object.set_gravity_scale(0.0)
+		object.set_freeze_enabled(true)
 
 
 func _release_object():
-	grabbed_object.set_gravity_scale(1.0)
+	grabbed_object.set_freeze_enabled(false)
 	grabbed_object = null
+	object_target.position.z = -0.5
 
 
 func _update_grabbed_position(delta):
-	var target_pos = grabbed_object.global_position.move_toward(object_target.global_position, delta)
-	grabbed_object.global_position = target_pos
+	var target_pos = grabbed_object.global_position.lerp(object_target.global_position, 3.0 * delta)
+	grabbed_object.move_and_collide(target_pos - grabbed_object.global_position)
 
 
 func _rotate_grabbed():
 	grabbed_object.rotate_x(_mouse_position.y * object_rotation_speed)
-	grabbed_object.rotate_object_local(Vector3(0,0,1), _mouse_position.x * object_rotation_speed)
+	grabbed_object.rotate_object_local(Vector3(0,1,0), _mouse_position.x * object_rotation_speed)
 	_mouse_position = Vector2(0, 0)
 
 

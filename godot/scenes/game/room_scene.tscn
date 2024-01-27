@@ -53,7 +53,7 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 3.78748e
 material_override = ExtResource("3_7em1d")
 
 [node name="OutsideLight" type="OmniLight3D" parent="room_base"]
-transform = Transform3D(-4.35058e-08, 0, 0.995297, 0, 0.995297, 0, -0.995297, 0, -4.35058e-08, -3.06269, 1.48832, 0.203357)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.06269, 1.48832, 0.203357)
 light_color = Color(1, 0.933333, 0.788235, 1)
 light_energy = 0.5
 shadow_enabled = true
