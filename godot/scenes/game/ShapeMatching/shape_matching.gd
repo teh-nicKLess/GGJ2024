@@ -34,7 +34,6 @@ func _on_area_3d_3_body_entered(body):
 	on_area_3d_any_body_entered(areas[2], body)
 
 func on_area_3d_any_body_entered(area, body):
-	print(areas[0].get_overlapping_bodies().size())
 	var number_contents = area.get_overlapping_bodies().size()
 	if number_contents == 2:
 		double_fill.emit()
