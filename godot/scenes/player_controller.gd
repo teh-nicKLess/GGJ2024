@@ -41,9 +41,9 @@ func _input(event):
 			MOUSE_BUTTON_RIGHT: # attempt to activate object rotation
 				rotating_grabbed = event.pressed and grabbed_object
 			MOUSE_BUTTON_WHEEL_UP: # attempt to push object away
-				if grabbed_object: _push_grabbed()
+				if event.pressed and grabbed_object: _push_grabbed()
 			MOUSE_BUTTON_WHEEL_DOWN: # attempt to pull object towards player
-				if grabbed_object: _pull_grabbed()
+				if event.pressed and grabbed_object: _pull_grabbed()
 
 
 # Updates mouselook and movement every frame
@@ -114,14 +114,8 @@ func _rotate_grabbed():
 
 
 func _pull_grabbed():
-	var object_z_near = object_target.position.z - object_dist_min
-	var object_z_far = object_target.position.z - object_dist_max
-	object_target.position.z = clamp(object_target.position.z - 0.1, object_z_far, object_z_near)
-	print("Pull: %f, %f, %f" % [object_target.position.z, object_dist_min, object_dist_max])
+	object_target.position.z = clamp(object_target.position.z + 0.1, -object_dist_max, -object_dist_min)
 
 
 func _push_grabbed():
-	var object_z_near = object_target.position.z - object_dist_min
-	var object_z_far = object_target.position.z - object_dist_max
-	object_target.position.z = clamp(object_target.position.z + 0.1, object_z_far, object_z_near)
-	print("Push: %f, %f, %f" % [object_target.position.z, object_dist_min, object_dist_max])
+	object_target.position.z = clamp(object_target.position.z - 0.1, -object_dist_max, -object_dist_min)
