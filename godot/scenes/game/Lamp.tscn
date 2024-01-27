@@ -1,4 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://djq65ic1pbyht"]
+[gd_scene load_steps=12 format=3 uid="uid://djq65ic1pbyht"]
+
+[ext_resource type="Script" path="res://scenes/game/Lamp.gd" id="1_jumee"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0oiv"]
 
@@ -111,7 +113,7 @@ height = 0.0773619
 radius = 0.200031
 
 [node name="Lamp" type="RigidBody3D"]
-angular_damp = 5.0
+script = ExtResource("1_jumee")
 
 [node name="Cable" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

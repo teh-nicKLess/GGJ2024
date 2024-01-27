@@ -1,14 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=14 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="Script" path="res://scenes/game/room_scene.gd" id="1_22d2t"]
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
 [ext_resource type="PackedScene" uid="uid://djq65ic1pbyht" path="res://scenes/game/Lamp.tscn" id="2_6t3bl"]
 [ext_resource type="Material" uid="uid://bhp8cc2yvf1yv" path="res://assets/models/room_base/room_base_mat.tres" id="3_7em1d"]
-[ext_resource type="PackedScene" uid="uid://brhkh3yp2ot5l" path="res://assets/models/simple_table/simple_table.tscn" id="3_xnqhc"]
+[ext_resource type="PackedScene" path="res://assets/models/simple_table/simple_table.tscn" id="3_xnqhc"]
 [ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
 [ext_resource type="PackedScene" uid="uid://bndnc0acednro" path="res://assets/models/door/door.glb" id="8_2crcs"]
 [ext_resource type="PackedScene" uid="uid://dee3m2coregme" path="res://scenes/game/ShapeMatching/shape_matching.tscn" id="9_7jt25"]
 [ext_resource type="Material" uid="uid://wbxo21w6ylv3" path="res://assets/models/door/door_mat.tres" id="9_yrkcg"]
+[ext_resource type="Script" path="res://scenes/game/ClownControl.gd" id="10_qo6ab"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 
@@ -79,7 +80,9 @@ node_b = NodePath("Lamp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.485886)
 
 [node name="Lamp" parent="room_base/Ceiling/JoltConeTwistJoint3D" instance=ExtResource("2_6t3bl")]
-transform = Transform3D(0.918839, 0.394632, 0, -0.394632, 0.918839, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.999752, -0.022268, -2.26391e-14, 0.022268, 0.999752, 1.04187e-13, 2.03136e-14, -1.04665e-13, 1, 0, -0.707588, 0)
+can_sleep = false
+angular_damp = 0.2
 
 [node name="hobbyhorse" parent="." instance=ExtResource("5_umjxg")]
 transform = Transform3D(0.735932, 0, -0.677056, 0, 1, 0, 0.677056, 0, 0.735932, -1.21177, 5.96046e-08, -1.27076)
@@ -93,6 +96,28 @@ material_override = ExtResource("9_yrkcg")
 
 [node name="ShapeMatching" parent="." instance=ExtResource("9_7jt25")]
 transform = Transform3D(1.00785, 0, 0, 0, 1.00785, 0, 0, 0, 1.04277, 0, 0.753968, 0.517744)
+
+[node name="ClownControl" type="CanvasLayer" parent="."]
+script = ExtResource("10_qo6ab")
+
+[node name="MarginContainer" type="MarginContainer" parent="ClownControl"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Debug" type="Label" parent="ClownControl/MarginContainer"]
+layout_mode = 2
+text = "Debug"
+
+[node name="Subtitles" type="Label" parent="ClownControl/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0.243137, 0.188235, 1)
+text = "Beware! I am the Clown-CTRL!"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [editable path="room_base"]
 [editable path="door"]
