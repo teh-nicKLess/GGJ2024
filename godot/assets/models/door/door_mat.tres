@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://wbxo21w6ylv3"]
+
+[ext_resource type="Texture2D" uid="uid://3tpafci1d1sa" path="res://assets/models/door/door_door_BaseColor.png" id="1_py65y"]
+[ext_resource type="Texture2D" uid="uid://bcawf7ye53d62" path="res://assets/models/door/door_door_AO.png" id="2_xgadm"]
+[ext_resource type="Texture2D" uid="uid://dm4ilvdj36pv5" path="res://assets/models/door/door_door_Metallic.png" id="3_lgbgw"]
+[ext_resource type="Texture2D" uid="uid://cloul4oimuu0e" path="res://assets/models/door/door_door_Normal.png" id="4_kd56n"]
+[ext_resource type="Texture2D" uid="uid://7yvheppxbnqj" path="res://assets/models/door/door_door_Roughness.png" id="5_xqubl"]
+
+[resource]
+albedo_texture = ExtResource("1_py65y")
+metallic = 1.0
+metallic_texture = ExtResource("3_lgbgw")
+roughness_texture = ExtResource("5_xqubl")
+normal_enabled = true
+normal_texture = ExtResource("4_kd56n")
+ao_enabled = true
+ao_texture = ExtResource("2_xgadm")

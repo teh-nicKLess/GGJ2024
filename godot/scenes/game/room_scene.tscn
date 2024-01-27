@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=10 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
 [ext_resource type="PackedScene" uid="uid://djq65ic1pbyht" path="res://scenes/game/Lamp.tscn" id="2_6t3bl"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ckv6egn4bpuaa" path="res://assets/models/simple_table/simple_table.glb" id="3_pk725"]
 [ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
 [ext_resource type="PackedScene" uid="uid://c8inxmr8wydyi" path="res://assets/models/shape_matching/box.glb" id="6_gt76u"]
+[ext_resource type="PackedScene" uid="uid://bndnc0acednro" path="res://assets/models/door/door.glb" id="8_2crcs"]
+[ext_resource type="Material" uid="uid://wbxo21w6ylv3" path="res://assets/models/door/door_mat.tres" id="9_yrkcg"]
 
 [node name="RoomScene" type="Node3D"]
 
@@ -40,4 +42,12 @@ transform = Transform3D(0.735932, 0, -0.677056, 0, 1, 0, 0.677056, 0, 0.735932, 
 [node name="box" parent="." instance=ExtResource("6_gt76u")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.0799305, 0.803883, 0.410189)
 
+[node name="door" parent="." instance=ExtResource("8_2crcs")]
+transform = Transform3D(-4.40545e-08, 0, -1.04277, 0, 1.00785, 0, 1.00785, 0, -4.5581e-08, 0.788797, 1.05321, -2.16601)
+
+[node name="door_joined" parent="door" index="0"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1.01619, 0, 0, 0)
+material_override = ExtResource("9_yrkcg")
+
 [editable path="room_base"]
+[editable path="door"]
