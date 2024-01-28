@@ -37,7 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00350952, 0.34552, 0.003112
 shape = SubResource("BoxShape3D_ggyj0")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-visible = false
 
 [node name="lid01" parent="RigidBody3D" instance=ExtResource("1_cioni")]
 
@@ -63,6 +62,18 @@ material_override = SubResource("StandardMaterial3D_bxk2h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.8, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SnapArea1"]
+shape = SubResource("SphereShape3D_6wx52")
+
+[node name="SnapArea2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnapArea2"]
+shape = SubResource("SphereShape3D_6wx52")
+
+[node name="SnapArea3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.8, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnapArea3"]
 shape = SubResource("SphereShape3D_6wx52")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

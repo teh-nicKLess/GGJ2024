@@ -28,5 +28,5 @@ func _save_game() -> void:
 	SaveGame.save_game(get_tree())
 
 
-func snap_object(position : Vector3):
-	$PlayerController.snap_object_to_target(position)
+func snap_object(snap_position : Vector3):
+	$PlayerController.snap_object_to_target(snap_position)

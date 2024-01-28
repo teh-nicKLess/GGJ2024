@@ -16,13 +16,14 @@ var _total_yaw = 0.0
 
 var grabbed_object : RigidBody3D = null
 var rotating_grabbed := false
+var shift := false
+
 var object_dist_min = 0.3
 var object_dist_max = 2.0
 var object_rotation_speed = 0.02
 
 var snapping_active = false
-var unsnap_linear_threshold = 0.1
-var unsnap_angular_threshold = PI/10.0
+var unsnap_linear_threshold = 0.005
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,11 +45,16 @@ func _input(event):
 					else:
 						_grab_object()
 			MOUSE_BUTTON_RIGHT: # attempt to activate object rotation
-				rotating_grabbed = event.pressed and grabbed_object
+				rotating_grabbed = event.pressed
 			MOUSE_BUTTON_WHEEL_UP: # attempt to push object away
 				if event.pressed and grabbed_object: _push_grabbed()
 			MOUSE_BUTTON_WHEEL_DOWN: # attempt to pull object towards player
 				if event.pressed and grabbed_object: _pull_grabbed()
+	
+	if event is InputEventKey:
+		match event.keycode:
+			KEY_SHIFT:
+				shift = event.pressed
 
 
 # Updates mouselook and movement every frame
@@ -59,10 +65,10 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	if rotating_grabbed:
-		_rotate_grabbed()
-	else:
-		if grabbed_object:
+	if grabbed_object:
+		if rotating_grabbed:
+			_rotate_grabbed()
+		else:
 			_update_grabbed_position(delta)
 
 
@@ -116,13 +122,13 @@ func _release_object():
 	#grabbed_object.set_freeze_enabled(false)
 	grabbed_object.set_gravity_scale(1.0)
 	grabbed_object = null
+	rotating_grabbed = false
 
 
-## TODO: Call this from main when shape_matching signals sufficient proximity
-func snap_object_to_target(hole_position : Vector3):
-	snapping_active = true
-	grabbed_object.set_global_position(hole_position)
-	#grabbed_object.set_global_rotation(hole_rotation)
+func snap_object_to_target(snap_position : Vector3):
+	if grabbed_object:
+		snapping_active = true
+		grabbed_object.set_global_position(snap_position + Vector3(0, 0.02, 0))
 
 
 func _update_grabbed_position(delta):
@@ -134,13 +140,18 @@ func _update_grabbed_position(delta):
 		if grabbed_object.global_position.distance_to(old_position) > unsnap_linear_threshold:
 			snapping_active = false
 		else:
-			grabbed_object.set_global_position(old_position)
+			grabbed_object.global_position.x = old_position.x
+			grabbed_object.global_position.z = old_position.z
 
 
 func _rotate_grabbed():
 	var old_rotation = grabbed_object.global_rotation
 	grabbed_object.rotate_x(_mouse_position.y * object_rotation_speed)
-	grabbed_object.rotate_y(_mouse_position.x * object_rotation_speed)
+	
+	if shift:
+		grabbed_object.rotate_z(_mouse_position.x * object_rotation_speed)
+	else:
+		grabbed_object.rotate_y(_mouse_position.x * object_rotation_speed)
 	_mouse_position = Vector2(0, 0)
 	
 	#if snapping_active:

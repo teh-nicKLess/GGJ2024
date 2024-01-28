@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dee3m2coregme"]
 
 [ext_resource type="Script" path="res://scenes/game/ShapeMatching/shape_matching.gd" id="1_8ffwt"]
-[ext_resource type="PackedScene" uid="uid://cbhx4s6msgu7l" path="res://scenes/game/ShapeMatching/lid1.tscn" id="1_jx6iu"]
+[ext_resource type="PackedScene" uid="uid://dk21emly304hg" path="res://scenes/game/ShapeMatching/lid1_dupli.tscn" id="2_cjyx6"]
 [ext_resource type="PackedScene" uid="uid://brc02av2dbbff" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="2_f8qil"]
 [ext_resource type="PackedScene" uid="uid://dkmb6t3nfp563" path="res://scenes/game/ShapeMatching/star.tscn" id="3_rlkfq"]
 [ext_resource type="PackedScene" uid="uid://dg5p7aal641pg" path="res://scenes/game/ShapeMatching/triangle.tscn" id="4_0nfqv"]
@@ -12,8 +12,8 @@
 [node name="ShapeMatching" type="Node3D"]
 script = ExtResource("1_8ffwt")
 
-[node name="Lid1" parent="." instance=ExtResource("1_jx6iu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Lid1_Duplicate" parent="." instance=ExtResource("2_cjyx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84198, 0)
 
 [node name="PuzzleBox" parent="." instance=ExtResource("2_f8qil")]
 

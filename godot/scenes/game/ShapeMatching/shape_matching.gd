@@ -7,6 +7,7 @@ signal one_solved
 signal fallen_item
 signal double_fill
 signal object_snapping
+signal object_unsnapping
 
 var areas
 #var snap_areas
@@ -27,14 +28,6 @@ func _ready():
 	_prepare_snapping()
 
 
-func _physics_process(delta):
-	test_snap_proximity()
-	
-func test_snap_proximity():
-	# TODO: test for snap proximity
-	pass
-
-
 # Prepare snapping system
 func _prepare_snapping():
 	var lid = find_child("Lid*")
@@ -42,9 +35,11 @@ func _prepare_snapping():
 		snap_area.body_entered.connect(_snap_object.bind(snap_area.global_position))
 	
 
-func _snap_object(_object : RigidBody3D, position : Vector3):
-	print("Snap now!: ", _object, " ", position)
-	object_snapping.emit(position)
+func _snap_object(_object : RigidBody3D, snap_position : Vector3):
+	print("Snap now!: ", _object, " ", snap_position)
+	object_snapping.emit(snap_position)
+
+
 
 func _on_area_3d_body_entered(body):
 	print("shape in hole 1")
@@ -58,7 +53,7 @@ func _on_area_3d_3_body_entered(body):
 	print("shape in hole 3")
 	on_area_3d_any_body_entered(areas[2], body)
 
-func on_area_3d_any_body_entered(area, body):
+func on_area_3d_any_body_entered(area, _body):
 	var number_contents = area.get_overlapping_bodies().size()
 	if number_contents == 2:
 		double_fill.emit()

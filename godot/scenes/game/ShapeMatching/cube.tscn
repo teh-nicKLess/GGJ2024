@@ -20,6 +20,7 @@ size = Vector3(0.0369141, 0.0369141, 0.0375)
 [node name="Cube" type="RigidBody3D"]
 mass = 0.05
 freeze_mode = 1
+continuous_cd = true
 
 [node name="cube" parent="." instance=ExtResource("1_31tew")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
