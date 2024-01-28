@@ -15,39 +15,39 @@ var areas
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	areas = [
-		get_node("PuzzleBox/Area3D"),
-		get_node("PuzzleBox/Area3D2"),
-		get_node("PuzzleBox/Area3D3")
-		]
-	
-	_prepare_snapping()
+    areas = [
+        get_node("PuzzleBox/Area3D"),
+        get_node("PuzzleBox/Area3D2"),
+        get_node("PuzzleBox/Area3D3")
+        ]
+
+    _prepare_snapping()
 
 
 # Prepare snapping system
 func _prepare_snapping():
-	var lid = find_child("Lid*")
-	for snap_area : Area3D in lid.find_children("SnapArea*"):
-		snap_area.body_entered.connect(_snap_object.bind(snap_area.global_position))
-	
+    var lid = find_child("Lid*")
+    for snap_area : Area3D in lid.find_children("SnapArea*"):
+        snap_area.body_entered.connect(_snap_object.bind(snap_area.global_position))
+
 
 func _snap_object(_object : RigidBody3D, snap_position : Vector3):
-	print("Snap now!: ", _object, " ", snap_position)
-	object_snapping.emit(snap_position)
+    print("Snap now!: ", _object, " ", snap_position)
+    object_snapping.emit(snap_position)
 
 
 
 func _on_area_3d_body_entered(body):
-	print("%s in hole 3 of %s" % [body.name, name])
-	on_area_3d_any_body_entered(areas[0], body)
+    print("%s in hole 3 of %s" % [body.name, name])
+    on_area_3d_any_body_entered(areas[0], body)
 
 func _on_area_3d_2_body_entered(body):
-	print("%s in hole 3 of %s" % [body.name, name])
-	on_area_3d_any_body_entered(areas[1], body)
+    print("%s in hole 3 of %s" % [body.name, name])
+    on_area_3d_any_body_entered(areas[1], body)
 
 func _on_area_3d_3_body_entered(body):
-	print("%s in hole 3 of %s" % [body.name, name])
-	on_area_3d_any_body_entered(areas[2], body)
+    print("%s in hole 3 of %s" % [body.name, name])
+    on_area_3d_any_body_entered(areas[2], body)
 
 func on_area_3d_any_body_entered(area, _body):
 	var number_contents = area.get_overlapping_bodies().size()
@@ -67,7 +67,7 @@ func on_area_3d_any_body_entered(area, _body):
 		print("level_solved")
 		level_solved.emit()
 	
-	if number_contents_sum == 1:
+	if number_contents_sum >= 1:
 		print("one_solved")
 		one_solved.emit()
 		return

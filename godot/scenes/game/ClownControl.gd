@@ -7,7 +7,7 @@ signal action_triggered(action:String)
 @onready var clown_audio: AudioStreamPlayer3D = $"../ClownAudio"
 
 const BOX_HIT_COOLDOWN := 0.1 # cooldown factor per second
-const AGITATION_FACTOR := 0.1 # higher means clows is agitated quicker
+const AGITATION_FACTOR := 0.4 # higher means clows is agitated quicker
 
 
 var ctrl
