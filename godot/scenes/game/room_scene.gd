@@ -17,6 +17,7 @@ var random_event_timer := 0.0
 var random_event_type := ""
 var game_is_on := false
 var level_timeout_timer := 0.0
+var current_puzzle : Node3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -162,12 +163,15 @@ func prepare_level_2():
 
 func _prepare_level(number):
 	var table = find_child("operating_table")
-	var previous = table.find_child("ShapeMatching*")
-	if previous:
-		table.remove_child(previous)
-		previous.queue_free()
-		previous.visible = false
-		previous.global_position = Vector3(0, -1000, 0)
+	if current_puzzle:
+		current_puzzle.get_parent().remove_child(current_puzzle)
+		current_puzzle.queue_free()
+	#var previous = table.find_child("ShapeMatching*")
+	#if previous:
+		#table.remove_child(previous)
+		#previous.queue_free()
+		#previous.visible = false
+		#previous.global_position = Vector3(0, -1000, 0)
 
 	var next : Node3D
 	match number:
@@ -178,6 +182,8 @@ func _prepare_level(number):
 	table.add_child(next)
 	next.position = Vector3(0.1, 0.73, 0)
 	next.rotate_y(PI/2.0)
+	
+	current_puzzle = next
 
 	next.connect("one_solved", handle_one_solved)
 	next.connect("box_hit", handle_box_hit)
