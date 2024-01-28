@@ -160,6 +160,8 @@ func _prepare_level(number):
 	if previous:
 		table.remove_child(previous)
 		previous.queue_free()
+		previous.visible = false
+		previous.global_position = Vector3(0, -1000, 0)
 	
 	var next : Node3D
 	match number:
