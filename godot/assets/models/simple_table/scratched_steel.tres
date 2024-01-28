@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c0djk54dcpbb5"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://xwg722o72qrn"]
 
 [ext_resource type="Texture2D" uid="uid://duxxc44kw005o" path="res://assets/models/simple_table/Metal002_2K-JPG_Color.jpg" id="1_uj012"]
 [ext_resource type="Texture2D" uid="uid://bpw0o28pccbkm" path="res://assets/models/simple_table/Metal002_2K-JPG_Metalness.jpg" id="2_y06v1"]

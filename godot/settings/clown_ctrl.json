@@ -3,19 +3,104 @@
 
 {
  "trigger": "start_game", "cond": [],
- "text": "Hallo mein lieber Freund!|3.0|Ist doch OK, wenn ich dich meinen lieben Freund nenne, oder?|5.0|Ich bin ja sooo froh, das Du endlich wach bist! Ich hoffe Dein Kopf tut Dir nicht so sehr weh.|8.0|Nun gut. Sch\u00f6n das Du da bist.|10.0|Mir ist ja sooo langweilig, soooo langweilig!|12.0|Ich m\u00f6chte mich gleich mal entschuldigen, weil ich mich Dir - aufgrund der momentanen Situation - |15.0|nicht pers\u00f6nlich gegen\u00fcber treten kann. Aber ich bin mir sicher,|17.0| Ich habe Dein vollstes Verst\u00e4ndnis daf\u00fcr.|20.0|So mein Freund! Dann lass uns doch mal Anfangen!|22.0|Ich hab ein paar Tricks auf Lager, die Dir sicherlich die Augen aus dem Kopf fallen lassen!|24.0|Du wirst laut schreien vor lauter Freude! Und ich auch! Lass uns anfangen!|27.0|Du willst doch mit mir Spielen? Oder?",
+ "text": "
+ Hallo mein lieber Freund!|5.0|
+ Ist doch OK, wenn ich dich meinen lieben Freund nenne, oder?|5.0|
+ Ich bin ja sooo froh, das Du endlich wach bist!|3.0|
+ Ich hoffe Dein Kopf tut Dir nicht so sehr weh.|3.0|Und Du hast ein bisschen schlafen können.|4.0|
+ Nun gut.|1.0|
+ Sch\u00f6n das Du da bist.|10.0|
+ Mir ist ja sooo langweilig, soooo langweilig!|3.0|
+ Ich m\u00f6chte mich gleich mal entschuldigen, weil ich mich Dir - aufgrund der momentanen Situation - |4.0|
+ nicht pers\u00f6nlich gegen\u00fcber treten kann.|3.0|
+ Aber ich bin mir sicher,|2.0|
+ Ich habe Dein vollstes Verst\u00e4ndnis daf\u00fcr.|10.0|
+ So mein Freund! Dann lass uns doch mal Anfangen!|3.0|
+ Ich hab ein paar Tricks auf Lager,|2.0|
+ die Dir sicherlich die Augen aus dem Kopf fallen lassen!|5.0|
+ Du wirst laut schreien vor lauter Freude!|3.0|
+ Und ich auch!|2.0|
+ Lass uns anfangen!|3.0|
+ Du willst doch mit mir Spielen? |2| Oder?",
  "action": "game_intro_waiting_player"
 },
-{"action": "prepare_level_0", "text": "Ich werte das mal als ein \"Ja\".|5|Los gehts!|10|", "trigger": "continue_level_0", "cond": []},
+{"action": "prepare_level_0", "text": "Ich werte das mal als ein \"Ja\".|5|Los gehts!|1|", "trigger": "continue_level_0", "cond": []},
 
 
 
 {
  "trigger": "prepare_level_0", "cond": [],
- "text": "Ich habe hier was tolles f\u00fcr Dich vorbereitet.|3|Das gef\u00e4llt Dir doch, oder?|6|Das sollte es auch besser, ich hab mir besonders viel M\u00fche gegeben.|10|Extra f\u00fcr Dich, mein Freund!|13|Na, hast Du schon kapiert was Du tun sollst? Und du bist ja sooo ein schlaues Kerlchen!|17|Wunderbar, Wunderbar!|20|Finde f\u00fcr jedes Loch das passende Kl\u00f6tzchen.|24|In jedes Loch das passende Kl\u00f6tzchen. In jedes genau eins!|30|Das ist auf jeden Fall machbar, denkst Du nicht? Na prima, dann mal los!|35|Wenn Du es schaffst, bekommst Du vielleicht eine Belohnung!|40|",
+ "text": "
+    Ich habe hier was tolles f\u00fcr Dich vorbereitet.|3|
+    Das gef\u00e4llt Dir doch, oder?|6|
+    Das sollte es auch besser, ich hab mir besonders viel M\u00fche gegeben.|4|
+    Extra f\u00fcr Dich, mein Freund!|4|
+    Na, hast Du schon kapiert was Du tun sollst? Und du bist ja sooo ein schlaues Kerlchen!|4|
+    Wunderbar, Wunderbar!|2|
+    Finde f\u00fcr jedes Loch das passende Kl\u00f6tzchen.|5|
+    In jedes Loch das passende Kl\u00f6tzchen.|5|
+    In jedes genau eins!|3|
+    Das ist auf jeden Fall machbar, denkst Du nicht?|3|
+    Na prima, dann mal los!|3|
+    Wenn Du es schaffst, bekommst Du vielleicht eine Belohnung!|3|",
  "action": "level_0_ready",
 },
 
+{
+ "trigger": "level_0_finished", "cond": [],
+ "text": "
+    Das hat sooo viel Spass gemacht!|2|
+    Jetzt willst Du sicher Deine Belohung!|3|
+    Nun, ich habe eine gute und eine schlechte Nachricht für Dich.|3|
+    Zuerst die Gute:|2|
+    Du darfst noch ein Spiel spielen, welches Ich extra für Dich implementiert habe!|5|
+    Los geht's!|1|",
+ "action": "prepare_level_1",
+},
+
+{
+ "trigger": "prepare_level_1", "cond": [],
+ "text": "
+    Tadaaaa!|2|
+    Hier dein nächstes Spiel!|2|
+    Ich bin mir sicher, hier habe ich mich selbst übertroffen!|5|
+    Du wist ein riesen Spass haben.|2|
+    Wir beide werden ein riesen Spass haben!|6|
+    Das Spiel hat ein riesen Potential|6|
+    Hmmm. Du hast mehr erwartet?|3| ... |3|
+    Du willst Deine Hände sehen? Und mehr Kontrolle? |7|
+    Du willst mehr Polish? |4|
+    Ich weiss selber, dass das ein Scheiss ist!!!! |2|
+    Was glaubst Du kann ich in so kurzer Zeit für Dich herstellen? |2|
+    Los! |1| Spiel! |1|
+    Nur ein Klotz in jedes Loch! Nur ein Klotz! |1|",
+ "action": "level_1_ready",
+},
+
+{
+ "trigger": "level_1_finished", "cond": [],
+ "text": "
+    Na, das war ja suuuuuper! |3|
+    Du machst Das wirklich gut! |2|
+    Und ich muss sagen, ich bin ja richtig froh, |2|
+    das es Dir auch so viel Spass macht! |5|
+    Warte nicht! |1|
+    Wir machen gleich weiter! |2|
+    Du freust Dich doch sicher schon auf Deine Belohnung!!! |1|",
+ "action": "prepare_level_2",
+},
+
+{
+ "trigger": "prepare_level_2", "cond": [],
+ "text": "
+    Wie versprochen, hier siehst Du die ultimative Gaming experience! |4|
+    Alles ganz genau geplant, durchgeführt und getestet! |4|
+    Mein Meisterwerk! |4|
+    Versau es nicht! |1|
+    Los gehts! |1|
+    Und das Beste, danach gibts eine Belohnung! |1|",
+ "action": "level_2_ready",
+},
 
 
 {"action": null, "text": "Bist Du Dir sicher, das Du das Spiel verstanden hast?", "trigger": "random_talk",

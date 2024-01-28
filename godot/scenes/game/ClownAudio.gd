@@ -39,6 +39,8 @@ func subtitle_to_res(text : String) -> String:
     return ""
 
 func play_random_noise(agit_level):
+    if not subs2res:
+        return
     var res_list = subs2res["random"][agit_level]
     var res = res_list[randi() % res_list.size()]
     play_resource(res)
