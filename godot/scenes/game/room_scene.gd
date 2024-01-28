@@ -2,6 +2,10 @@ extends Node3D
 
 @onready var clown_control: CanvasLayer = $ClownControl
 
+var shape_matching_1 = preload("res://scenes/game/ShapeMatching/shape_matching_1.tscn")
+var shape_matching_2 = preload("res://scenes/game/ShapeMatching/shape_matching_2.tscn")
+var shape_matching_3 = preload("res://scenes/game/ShapeMatching/shape_matching_3.tscn")
+
 const PLAYER_MOVEMENT_COUNTER_MAX := 70
 const MIN_RANDOM_EVENT_TIME := 5.0
 const MAX_RANDOM_EVENT_TIME := 10.0
@@ -139,16 +143,30 @@ func fade_in_scene():
 	pass
 
 func prepare_level_0():
-	# todo
-	pass
+	_prepare_level(0)
 
 func prepare_level_1():
-	# todo
-	pass
+	_prepare_level(1)
 
 func prepare_level_2():
-	# todo
-	pass
+	_prepare_level(2)
+
+func _prepare_level(number):
+	var table = find_child("operating_table")
+	var previous = table.find_child("ShapeMatching*")
+	if previous:
+		table.remove_child(previous)
+		previous.queue_free()
+	
+	var next : Node3D
+	match number:
+		0: next = shape_matching_1.instantiate()
+		1: next = shape_matching_2.instantiate()
+		2: next = shape_matching_3.instantiate()
+	
+	table.add_child(next)
+	next.position = Vector3(0.1, 0.73, 0)
+	next.rotate_y(PI/2.0)
 
 func play_ending_scene():
 	# todo

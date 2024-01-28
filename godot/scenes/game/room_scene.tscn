@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=24 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="Script" path="res://scenes/game/room_scene.gd" id="1_22d2t"]
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://ce672q8mnvxuh" path="res://assets/models/simple_table/operating_table.tscn" id="4_ins1j"]
 [ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
 [ext_resource type="PackedScene" uid="uid://bndnc0acednro" path="res://assets/models/door/door.glb" id="8_2crcs"]
-[ext_resource type="PackedScene" uid="uid://dee3m2coregme" path="res://scenes/game/ShapeMatching/shape_matching_1.tscn" id="9_7jt25"]
 [ext_resource type="Material" uid="uid://wbxo21w6ylv3" path="res://assets/models/door/door_mat.tres" id="9_yrkcg"]
 [ext_resource type="Script" path="res://scenes/game/ClownControl.gd" id="10_qo6ab"]
 [ext_resource type="PackedScene" uid="uid://68etf3dwhwqj" path="res://assets/models/chair/painted_wooden_chair_01_2k.glb" id="11_4r557"]
@@ -17,8 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://d1kiqhdigdofv" path="res://scenes/game/clown_standing.tscn" id="15_abr13"]
 [ext_resource type="Script" path="res://scenes/game/ClownAudio.gd" id="16_pc5wc"]
 [ext_resource type="AudioStream" uid="uid://3nsme0sibp8j" path="res://assets/background.ogg" id="17_bye0h"]
-[ext_resource type="PackedScene" uid="uid://2pn70i6517rp" path="res://scenes/game/ShapeMatching/shape_matching_2.tscn" id="18_wngv1"]
-[ext_resource type="PackedScene" uid="uid://cndu4oe70u1h" path="res://scenes/game/ShapeMatching/shape_matching_3.tscn" id="18_x0i5l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 
@@ -199,6 +196,7 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_48avq")
 }
+speed_scale = 0.5
 
 [node name="ClownStanding" parent="Decoration" instance=ExtResource("15_abr13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92102, -0.818844, -2.53195)
@@ -210,15 +208,6 @@ autostart = true
 
 [node name="painted_wooden_chair_01_2k" parent="Decoration" instance=ExtResource("11_4r557")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00398584, 0, 1.14554)
-
-[node name="ShapeMatching_1" parent="." instance=ExtResource("9_7jt25")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.376702, 0.727212, 0.325899)
-
-[node name="ShapeMatching_2" parent="." instance=ExtResource("18_wngv1")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.00188416, 0.72926, 0.561373)
-
-[node name="ShapeMatching_3" parent="." instance=ExtResource("18_x0i5l")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.407995, 0.727987, 0.502156)
 
 [connection signal="action_triggered" from="ClownControl" to="." method="_on_clown_control_action_triggered"]
 [connection signal="timeout" from="Decoration/Timer" to="." method="_on_timer_timeout"]
