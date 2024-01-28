@@ -52,6 +52,7 @@ transform = Transform3D(0.833336, 0, -0.552766, 0, 1, 0, 0.552766, 0, 0.833336, 
 [node name="RigidBody3D" parent="." instance=ExtResource("6_tx7i8")]
 transform = Transform3D(0.761448, 0.639654, 0.105068, 0, 0.162086, -0.986777, -0.648226, 0.751379, 0.12342, 2.47906, 0.708318, 2.19905)
 
+[connection signal="box_hit" from="Lid2" to="." method="_on_box_hit"]
 [connection signal="body_entered" from="PuzzleBox/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="PuzzleBox/Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_entered" from="PuzzleBox/Area3D3" to="." method="_on_area_3d_3_body_entered"]

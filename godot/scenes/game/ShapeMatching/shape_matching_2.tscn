@@ -49,6 +49,7 @@ transform = Transform3D(0.969578, 0.166917, -0.179046, -0.244783, 0.661152, -0.7
 [node name="Cylinder" parent="." instance=ExtResource("6_ybye1")]
 transform = Transform3D(0.358612, 0.646287, 0.67358, -0.874408, 0.485191, 0, -0.326815, -0.588984, 0.739114, -2.32162, 0.12754, 3.36967)
 
+[connection signal="box_hit" from="Lid1_Duplicate" to="." method="_on_box_hit"]
 [connection signal="body_entered" from="PuzzleBox/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="PuzzleBox/Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_entered" from="PuzzleBox/Area3D3" to="." method="_on_area_3d_3_body_entered"]

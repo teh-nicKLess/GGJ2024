@@ -11,12 +11,7 @@ signal object_unsnapping
 signal level_solved
 
 var areas
-#var snap_areas
 
-#@export var target_positions : Array[Vector3] = []
-#@export var target_rotations : Array[Vector3] = []
-##var linear_snapping_threshold = 0.05
-##var angular_snapping_threshold = PI/20.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -77,3 +72,5 @@ func on_area_3d_any_body_entered(area, _body):
 		one_solved.emit()
 		return
 	
+func _on_box_hit():
+	box_hit.emit()

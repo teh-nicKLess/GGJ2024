@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://oar6qab31ir8"]
 
-[ext_resource type="Script" path="res://scenes/game/ShapeMatching/shape_matching.gd" id="1_fyvsd"]
+[ext_resource type="Script" path="res://scenes/game/ShapeMatching/lid.gd" id="1_608jl"]
 [ext_resource type="PackedScene" uid="uid://dp1hyowo0goly" path="res://assets/models/shape_matching/lid03.glb" id="1_yxeav"]
 [ext_resource type="Texture2D" uid="uid://dycn38bccf1hm" path="res://assets/models/shape_matching/lid03_Material.036_BaseColor.png" id="2_5ynnt"]
 [ext_resource type="Texture2D" uid="uid://c02natlboge3f" path="res://assets/models/shape_matching/lid03_Material.036_Metallic.png" id="3_iysar"]
@@ -25,7 +25,7 @@ radius = 0.2
 size = Vector3(6.17877, 0.158325, 2.18396)
 
 [node name="Lid3" type="StaticBody3D"]
-script = ExtResource("1_fyvsd")
+script = ExtResource("1_608jl")
 
 [node name="lid03" parent="." instance=ExtResource("1_yxeav")]
 

@@ -5,6 +5,7 @@ extends Node3D
 var shape_matching_1 = preload("res://scenes/game/ShapeMatching/shape_matching_1.tscn")
 var shape_matching_2 = preload("res://scenes/game/ShapeMatching/shape_matching_2.tscn")
 var shape_matching_3 = preload("res://scenes/game/ShapeMatching/shape_matching_3.tscn")
+var clown_end = preload("res://scenes/game/clown_end.tscn")
 
 const PLAYER_MOVEMENT_COUNTER_MAX := 70
 const MIN_RANDOM_EVENT_TIME := 5.0
@@ -59,6 +60,8 @@ func _input(event):
 			handle_level_1_finished()
 		if event.keycode == KEY_2:
 			handle_level_2_finished()
+		if event.keycode == KEY_9:
+			play_ending_scene()
 	elif event is InputEventMouseMotion and waiting_for_player_movement:
 		player_movement_counter += 1
 		if player_movement_counter >= PLAYER_MOVEMENT_COUNTER_MAX:
@@ -169,7 +172,19 @@ func _prepare_level(number):
 	next.rotate_y(PI/2.0)
 
 func play_ending_scene():
-	# todo
-	pass
+	var table = find_child("operating_table")
+	var puzzle = table.find_child("ShapeMatching*")
+	var chair = find_child("painted_wooden_chair_01_2k")
+	if puzzle:
+		table.remove_child(puzzle)
+		puzzle.queue_free()
+	table.get_parent().remove_child(table)
+	table.queue_free()
+	chair.get_parent().remove_child(chair)
+	chair.queue_free()
+	
+	var ending = clown_end.instantiate()
+	ending.rotate_y(PI/2.0)
+	add_child(ending)
 
 

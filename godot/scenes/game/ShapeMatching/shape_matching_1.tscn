@@ -49,6 +49,7 @@ transform = Transform3D(-0.154997, -0.279335, 0.947601, -0.874408, 0.485191, 4.2
 [node name="Cube" parent="." instance=ExtResource("6_xxinn")]
 transform = Transform3D(0.844225, 0, -0.535989, 0, 1, 0, 0.535989, 0, 0.844225, -2.04758, 0, 2.45948)
 
+[connection signal="box_hit" from="Lid3" to="." method="_on_box_hit"]
 [connection signal="body_entered" from="PuzzleBox/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="PuzzleBox/Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_entered" from="PuzzleBox/Area3D3" to="." method="_on_area_3d_3_body_entered"]
