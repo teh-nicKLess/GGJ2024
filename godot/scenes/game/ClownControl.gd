@@ -167,6 +167,8 @@ func enqueue_text(text: String, action: String):
 
 func play_and_show(text: String):
     subtitles.text = text
+    clown_audio.play_subtitle(text)
+
 
 func call_trigger(action):
     trigger(action)

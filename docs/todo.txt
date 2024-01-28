@@ -1,7 +1,13 @@
 
-JSON übersetzten
+trigger für hit box
+trigger für put in
+trigger für level done
 
-Background noise loop
+play the voices
+
+start ending scene
+prepare levels functions
+fading functions
 
 
 

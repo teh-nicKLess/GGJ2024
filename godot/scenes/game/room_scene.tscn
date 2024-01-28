@@ -142,7 +142,6 @@ material_override = ExtResource("9_yrkcg")
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.052, 0, 0.728227, 0.517744)
 
 [node name="ClownControl" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("10_qo6ab")
 
 [node name="MarginContainer" type="MarginContainer" parent="ClownControl"]
