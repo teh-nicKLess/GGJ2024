@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=16 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="Script" path="res://scenes/game/room_scene.gd" id="1_22d2t"]
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dee3m2coregme" path="res://scenes/game/ShapeMatching/shape_matching.tscn" id="9_7jt25"]
 [ext_resource type="Material" uid="uid://wbxo21w6ylv3" path="res://assets/models/door/door_mat.tres" id="9_yrkcg"]
 [ext_resource type="Script" path="res://scenes/game/ClownControl.gd" id="10_qo6ab"]
+[ext_resource type="AudioStream" uid="uid://b5ucv7kijs2os" path="res://assets/voicelines/clown_hmm.ogg" id="11_jvthd"]
+[ext_resource type="Script" path="res://scenes/game/ClownAudio.gd" id="12_lej3r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 
@@ -117,6 +119,12 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 0.243137, 0.188235, 1)
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="ClownAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24352, 1.81671)
+stream = ExtResource("11_jvthd")
+bus = &"Clown"
+script = ExtResource("12_lej3r")
 
 [connection signal="action_triggered" from="ClownControl" to="." method="_on_clown_control_action_triggered"]
 
