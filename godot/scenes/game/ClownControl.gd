@@ -154,11 +154,15 @@ func rule_matches(rule, action:String) -> bool:
 
 func enqueue_text(text: String, action: String):
     var parts = text.split("|")
+    var ts = level_timer
     for part in parts:
         if part.is_valid_float():
-            text_queue.append(["ts", part.to_float() + level_timer])
+            ts += part.to_float()
+            text_queue.append(["ts", ts])
         else:
-            text_queue.append(["text", part])
+            part = part.strip_edges()
+            if part:
+                text_queue.append(["text", part])
     if action:
         text_queue.append(["trigger", action])
 
