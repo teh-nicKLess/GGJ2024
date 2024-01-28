@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=25 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="Script" path="res://scenes/game/room_scene.gd" id="1_22d2t"]
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ccjaewgp6bver" path="res://assets/models/deco/the_cake_is_a_lie.glb" id="14_rhvxc"]
 [ext_resource type="PackedScene" uid="uid://d1kiqhdigdofv" path="res://scenes/game/clown_standing.tscn" id="15_abr13"]
 [ext_resource type="Script" path="res://scenes/game/ClownAudio.gd" id="16_pc5wc"]
-[ext_resource type="AudioStream" uid="uid://dmy5v0wu0spu5" path="res://assets/background.ogg" id="17_bye0h"]
+[ext_resource type="AudioStream" uid="uid://3nsme0sibp8j" path="res://assets/background.ogg" id="17_bye0h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 
@@ -84,11 +84,14 @@ _data = {
 "clown_show": SubResource("Animation_6lg2f")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhdva"]
+size = Vector3(5, 0.2, 5)
+
 [node name="RoomScene" type="Node3D"]
 script = ExtResource("1_22d2t")
 
 [node name="room_base" parent="." instance=ExtResource("1_bm11y")]
-transform = Transform3D(-4.39179e-08, 0, -1.00473, 0, 1.00473, 0, 1.00473, 0, -4.39179e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="room_base_applied" parent="room_base" index="0"]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 3.78748e-10, 0, 0.00866473)
@@ -199,6 +202,12 @@ script = ExtResource("16_pc5wc")
 stream = ExtResource("17_bye0h")
 volume_db = -9.967
 autoplay = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.0965644, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_rhdva")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 

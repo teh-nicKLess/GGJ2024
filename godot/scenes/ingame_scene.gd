@@ -12,6 +12,8 @@ func _ready() -> void:
 		SaveGame.load_game(get_tree())
 	
 	pause_overlay.game_exited.connect(_save_game)
+	get_node("RoomScene/ShapeMatching").object_snapping.connect(snap_object)
+
 
 func _input(event) -> void:
 	if event.is_action_pressed("pause") and not pause_overlay.visible:
@@ -20,6 +22,11 @@ func _input(event) -> void:
 		pause_overlay.grab_button_focus()
 		pause_overlay.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
+
+
 func _save_game() -> void:
 	SaveGame.save_game(get_tree())
+
+
+func snap_object(position : Vector3):
+	$PlayerController.snap_object_to_target(position)

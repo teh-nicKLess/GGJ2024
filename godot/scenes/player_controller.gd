@@ -108,20 +108,21 @@ func _grab_object():
 	object_target.position.z = - camera.global_position.distance_to(object.global_position)
 	if object and object is RigidBody3D:
 		grabbed_object = object
-		object.set_freeze_enabled(true)
+		#object.set_freeze_enabled(true)
+		object.set_gravity_scale(0.0)
 
 
 func _release_object():
-	grabbed_object.set_freeze_enabled(false)
+	#grabbed_object.set_freeze_enabled(false)
+	grabbed_object.set_gravity_scale(1.0)
 	grabbed_object = null
-	#object_target.position.z = -0.5
 
 
 ## TODO: Call this from main when shape_matching signals sufficient proximity
-func snap_object_to_target(hole_position : Vector3, hole_rotation: Vector3):
+func snap_object_to_target(hole_position : Vector3):
 	snapping_active = true
 	grabbed_object.set_global_position(hole_position)
-	grabbed_object.set_global_rotation(hole_rotation)
+	#grabbed_object.set_global_rotation(hole_rotation)
 
 
 func _update_grabbed_position(delta):
@@ -139,14 +140,14 @@ func _update_grabbed_position(delta):
 func _rotate_grabbed():
 	var old_rotation = grabbed_object.global_rotation
 	grabbed_object.rotate_x(_mouse_position.y * object_rotation_speed)
-	grabbed_object.rotate_object_local(Vector3(0,1,0), _mouse_position.x * object_rotation_speed)
+	grabbed_object.rotate_y(_mouse_position.x * object_rotation_speed)
 	_mouse_position = Vector2(0, 0)
 	
-	if snapping_active:
-		if grabbed_object.global_rotation.dot(old_rotation) > (1.0 - unsnap_angular_threshold):
-			snapping_active = false
-		else:
-			grabbed_object.set_global_rotation(old_rotation)
+	#if snapping_active:
+		#if grabbed_object.global_rotation.dot(old_rotation) > (1.0 - unsnap_angular_threshold):
+			#snapping_active = false
+		#else:
+			#grabbed_object.set_global_rotation(old_rotation)
 			
 
 
