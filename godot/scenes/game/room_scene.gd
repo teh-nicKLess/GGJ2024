@@ -72,7 +72,34 @@ func handle_one_solved():
     clown_control.trigger("one_solved")
     random_event_type = "random_talk"
 
-
-
 func _on_timer_timeout():
     $ClownAnimator.play("clown_show")
+
+func fade_out_scene():
+    # todo
+    pass
+
+func fade_in_scene():
+    # todo
+    pass
+
+func prepare_level_0():
+    # todo
+    pass
+
+func prepare_level_1():
+    # todo
+    pass
+
+func prepare_level_2():
+    # todo
+    pass
+
+func prepare_level_3():
+    # todo
+    pass
+
+func play_ending_scene():
+    # todo
+    pass
+

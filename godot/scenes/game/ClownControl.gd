@@ -110,7 +110,6 @@ func trigger(action: String) -> void:
 
     if matching_rules:
         var rule = matching_rules[randi() % matching_rules.size()]
-        enqueue_text(rule["text"], rule["action"])
         if matching_rules.size() > 1 and last_rule_idx == rule["id"]:
             # prevent repetition of texts
             while last_rule_idx == rule["id"]:
