@@ -28,18 +28,24 @@ func dir_contents(path):
     return audio_files
 
 func play_resource(res):
-    self.stream = streams[res]
-    self.play(0.0)
+    if streams.has(res):
+        self.stream = streams[res]
+        self.play(0.0)
 
 func play_subtitle(text):
     var res_name:String = subtitle_to_res(text)
     play_resource(res_name)
 
 func subtitle_to_res(text : String) -> String:
+    var res_list = subs2res["subs"]
+    for sub in res_list:
+        if text.begins_with(sub["sub"]):
+            return sub["res"]
     return ""
 
 func play_random_noise(agit_level):
     var res_list = subs2res["random"][str(agit_level)]
-    var res = res_list[randi() % res_list.size()]
-    play_resource(res)
+    if res_list:
+        var res = res_list[randi() % res_list.size()]
+        play_resource(res)
 
