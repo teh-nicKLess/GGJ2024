@@ -49,7 +49,7 @@ func _process(delta):
 func _input(event):
 
 	# this is for debugging - it emulates the events created by interaction with the bricks and the box
-	if event is InputEventKey and event.pressed:
+	if false and event is InputEventKey and event.pressed:
 		if event.keycode == KEY_B:
 			handle_box_hit()
 		if event.keycode == KEY_S:
@@ -99,6 +99,12 @@ func handle_one_solved():
 	# this must be called when the user manages to insert a brick in a correct hole
 	clown_control.trigger("one_solved")
 	random_event_type = "random_talk"
+
+
+func handle_double_fill():
+	# this must be called when the user manages to insert a brick in a correct hole
+	clown_control.trigger("double_fill")
+	play_ending_scene()
 
 func handle_level_0_finished():
 	game_is_on = false
@@ -162,16 +168,27 @@ func _prepare_level(number):
 		previous.queue_free()
 		previous.visible = false
 		previous.global_position = Vector3(0, -1000, 0)
-	
+
 	var next : Node3D
 	match number:
 		0: next = shape_matching_1.instantiate()
 		1: next = shape_matching_2.instantiate()
 		2: next = shape_matching_3.instantiate()
-	
+
 	table.add_child(next)
 	next.position = Vector3(0.1, 0.73, 0)
 	next.rotate_y(PI/2.0)
+
+	next.connect("one_solved", handle_one_solved)
+	next.connect("box_hit", handle_box_hit)
+	next.connect("double_fill", handle_double_fill)
+
+	if number == 0:
+		next.connect("level_solved", handle_level_0_finished)
+	elif number == 1:
+		next.connect("level_solved", handle_level_1_finished)
+	elif number == 2:
+		next.connect("level_solved", handle_level_2_finished)
 
 func play_ending_scene():
 	var table = find_child("operating_table")
