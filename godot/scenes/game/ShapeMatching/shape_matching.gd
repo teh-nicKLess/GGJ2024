@@ -8,6 +8,7 @@ signal fallen_item
 signal double_fill
 signal object_snapping
 signal object_unsnapping
+signal level_solved
 
 var areas
 #var snap_areas
@@ -61,8 +62,15 @@ func on_area_3d_any_body_entered(area, _body):
 		return
 	
 	var number_contents_sum = 0
+	var solved = true
 	for section in areas:
-		number_contents_sum += section.get_overlapping_bodies().size()
+		var num_contents = section.get_overlapping_bodies().size()
+		number_contents_sum += num_contents
+		solved = solved && num_contents == 1
+		
+	if solved:
+		print("level_solved")
+		level_solved.emit()
 	
 	if number_contents_sum == 1:
 		print("one_solved")
