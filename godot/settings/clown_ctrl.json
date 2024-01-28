@@ -4,12 +4,12 @@
 {
  "trigger": "start_game", "cond": [],
  "text": "
- Hello my dear friend!|5.0|
- It's OK if I call you that, isn't it?|5.0|
+ Hello my dear friend!|3.0|
+ It's OK if I call you that, isn't it?|3.0|
  I'm sooo glad you're finally awake!|3.0|
- I hope your head doesn't hurt so much.|3.0| ...aaand you got some sleep.|4.0|
+ I hope your head doesn't hurt so much.|5.0| ...aaand you got some sleep.|4.0|
  Very well.|1.0|
- Thank you for being here.|10.0|
+ Thank you for being here.|5.0|
  I'm sooo bored, soooo bored!|3.0|
  But I am sure,|2.0|
  I have your full understanding for that.|10.0|

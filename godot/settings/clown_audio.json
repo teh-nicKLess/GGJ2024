@@ -3,13 +3,13 @@
      "1":[],
      "2": []},
  "subs": [
-    {"sub": "Hello my dear friend!", "res": "clown_intro.ogg"},
-    {"sub": "I'll take that as a", "res": "game_intro_response.og"},
-    {"sub": "I've prepared something great", "res": "level_0_intro.ogg"},
+    {"sub": "Hello my dear friend!", "res": "start_game.ogg"},
+    {"sub": "I'll take that as a", "res": "prepare_level_0.ogg"},
+    {"sub": "I've prepared something great", "res": "prepare_level_0_B.ogg"},
     {"sub": "That was so much fun", "res": "level_0_finished.ogg"},
-    {"sub": "Tadaaaa", "res": "level_1_intro.ogg"},
+    {"sub": "Tadaaaa", "res": "prepare_level_1.ogg"},
     {"sub": "Well, that was terrific", "res": "level_1_finished.ogg"},
-    {"sub": "As promised, here you can see my ultimate masterpiece", "res": "level_2_intro.ogg"},
+    {"sub": "As promised, here you can see my ultimate masterpiece", "res": "prepare_level_2.ogg"},
 
     {"sub": "Are you sure you understand", "res": ""},
     {"sub": "What do you want to do", "res": ""},
