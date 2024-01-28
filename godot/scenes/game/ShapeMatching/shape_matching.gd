@@ -9,6 +9,11 @@ signal double_fill
 
 var areas
 
+@export var target_positions : Array[Vector3] = []
+@export var target_rotations : Array[Vector3] = []
+var linear_snapping_threshold = 0.05
+var angular_snapping_threshold = PI/20.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	areas = [
@@ -17,8 +22,11 @@ func _ready():
 		get_node("PuzzleBox/Area3D3")
 		]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
+	test_snap_proximity()
+	
+func test_snap_proximity():
+	# TODO: test for snap proximity
 	pass
 
 func _on_area_3d_body_entered(body):

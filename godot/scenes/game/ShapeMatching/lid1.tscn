@@ -48,6 +48,7 @@ shape = SubResource("BoxShape3D_5luyy")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_tbmf7")
 
 [node name="lid01" parent="StaticBody3D" instance=ExtResource("1_cioni")]

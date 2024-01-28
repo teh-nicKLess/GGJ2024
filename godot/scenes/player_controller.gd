@@ -20,6 +20,10 @@ var object_dist_min = 0.3
 var object_dist_max = 2.0
 var object_rotation_speed = 0.02
 
+var snapping_active = false
+var unsnap_linear_threshold = 0.1
+var unsnap_angular_threshold = PI/10.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -113,15 +117,37 @@ func _release_object():
 	#object_target.position.z = -0.5
 
 
+## TODO: Call this from main when shape_matching signals sufficient proximity
+func snap_object_to_target(hole_position : Vector3, hole_rotation: Vector3):
+	snapping_active = true
+	grabbed_object.set_global_position(hole_position)
+	grabbed_object.set_global_rotation(hole_rotation)
+
+
 func _update_grabbed_position(delta):
 	var target_pos = grabbed_object.global_position.lerp(object_target.global_position, 3.0 * delta)
+	var old_position = grabbed_object.global_position
 	grabbed_object.move_and_collide(target_pos - grabbed_object.global_position)
+	
+	if snapping_active:
+		if grabbed_object.global_position.distance_to(old_position) > unsnap_linear_threshold:
+			snapping_active = false
+		else:
+			grabbed_object.set_global_position(old_position)
 
 
 func _rotate_grabbed():
+	var old_rotation = grabbed_object.global_rotation
 	grabbed_object.rotate_x(_mouse_position.y * object_rotation_speed)
 	grabbed_object.rotate_object_local(Vector3(0,1,0), _mouse_position.x * object_rotation_speed)
 	_mouse_position = Vector2(0, 0)
+	
+	if snapping_active:
+		if grabbed_object.global_rotation.dot(old_rotation) > (1.0 - unsnap_angular_threshold):
+			snapping_active = false
+		else:
+			grabbed_object.set_global_rotation(old_rotation)
+			
 
 
 func _pull_grabbed():
