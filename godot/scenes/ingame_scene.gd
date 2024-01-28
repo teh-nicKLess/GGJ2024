@@ -12,7 +12,9 @@ func _ready() -> void:
 		SaveGame.load_game(get_tree())
 	
 	pause_overlay.game_exited.connect(_save_game)
-	get_node("RoomScene/ShapeMatching").object_snapping.connect(snap_object)
+	
+	for shape_matching in find_children("ShapeMatching*"):
+		shape_matching.object_snapping.connect(snap_object)
 
 
 func _input(event) -> void:

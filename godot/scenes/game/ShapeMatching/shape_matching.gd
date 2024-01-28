@@ -42,15 +42,15 @@ func _snap_object(_object : RigidBody3D, snap_position : Vector3):
 
 
 func _on_area_3d_body_entered(body):
-	print("shape in hole 1")
+	print("%s in hole 3 of %s" % [body.name, name])
 	on_area_3d_any_body_entered(areas[0], body)
 
 func _on_area_3d_2_body_entered(body):
-	print("shape in hole 2")
+	print("%s in hole 3 of %s" % [body.name, name])
 	on_area_3d_any_body_entered(areas[1], body)
 
 func _on_area_3d_3_body_entered(body):
-	print("shape in hole 3")
+	print("%s in hole 3 of %s" % [body.name, name])
 	on_area_3d_any_body_entered(areas[2], body)
 
 func on_area_3d_any_body_entered(area, _body):

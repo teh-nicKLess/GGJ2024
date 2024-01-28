@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=27 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="Script" path="res://scenes/game/room_scene.gd" id="1_22d2t"]
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://d1kiqhdigdofv" path="res://scenes/game/clown_standing.tscn" id="15_abr13"]
 [ext_resource type="Script" path="res://scenes/game/ClownAudio.gd" id="16_pc5wc"]
 [ext_resource type="AudioStream" uid="uid://3nsme0sibp8j" path="res://assets/background.ogg" id="17_bye0h"]
+[ext_resource type="PackedScene" uid="uid://2pn70i6517rp" path="res://scenes/game/ShapeMatching/shape_matching_2.tscn" id="18_wngv1"]
+[ext_resource type="PackedScene" uid="uid://cndu4oe70u1h" path="res://scenes/game/ShapeMatching/shape_matching_3.tscn" id="18_x0i5l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 
@@ -50,6 +52,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2pmt3")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhdva"]
+size = Vector3(5, 0.2, 5)
+
 [sub_resource type="Animation" id="Animation_djtpv"]
 resource_name = "balloon_floating"
 length = 2.0
@@ -57,7 +62,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Balloon:position")
+tracks/0/path = NodePath("Decoration/Balloon:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +78,7 @@ length = 0.7
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ClownStanding")
+tracks/0/path = NodePath("Decoration/ClownStanding")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.921, -0.819, -2.532, 0.3, 1, 0.921, -0.45, -2.532, 0.4, 1, 0.921, -0.45, -2.532, 0.7, 1, 0.921, -0.819, -2.532)
@@ -83,9 +88,6 @@ _data = {
 "balloon_floating": SubResource("Animation_djtpv"),
 "clown_show": SubResource("Animation_6lg2f")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rhdva"]
-size = Vector3(5, 0.2, 5)
 
 [node name="RoomScene" type="Node3D"]
 script = ExtResource("1_22d2t")
@@ -128,18 +130,12 @@ transform = Transform3D(0.999752, -0.022268, -2.26391e-14, 0.022268, 0.999752, 1
 can_sleep = false
 angular_damp = 0.2
 
-[node name="hobbyhorse" parent="." instance=ExtResource("5_umjxg")]
-transform = Transform3D(0.735932, 0, -0.677056, 0, 1, 0, 0.677056, 0, 0.735932, -1.21177, 5.96046e-08, -1.27076)
-
 [node name="door" parent="." instance=ExtResource("8_2crcs")]
 transform = Transform3D(-4.40545e-08, 0, -1.04277, 0, 1.00785, 0, 1.00785, 0, -4.5581e-08, 0.788797, 1.05321, -2.16601)
 
 [node name="door_joined" parent="door" index="0"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1.01619, 0, 0, 0)
 material_override = ExtResource("9_yrkcg")
-
-[node name="ShapeMatching" parent="." instance=ExtResource("9_7jt25")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.052, 0, 0.728227, 0.517744)
 
 [node name="ClownControl" type="CanvasLayer" parent="."]
 visible = false
@@ -163,37 +159,6 @@ theme_override_colors/font_color = Color(1, 0.243137, 0.188235, 1)
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="painted_wooden_chair_01_2k" parent="." instance=ExtResource("11_4r557")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00398584, 0, 1.14554)
-
-[node name="Balloon" parent="." instance=ExtResource("12_1o3so")]
-transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, -0.175, 1.3, -1.73)
-
-[node name="Teddy" parent="." instance=ExtResource("13_wcy3v")]
-transform = Transform3D(-0.105874, -2.86324e-09, 0.169678, 0.0238756, 0.19801, 0.0148977, -0.16799, 0.0281422, -0.104821, 1.58218, 0.0532905, -1.68544)
-
-[node name="Cake" parent="." instance=ExtResource("14_rhvxc")]
-transform = Transform3D(0.0806083, 0, 0.0591802, 0, 0.1, 0, -0.0591802, 0, 0.0806083, -1.88284, 0.00226144, -0.122181)
-
-[node name="BalloonAnimator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_48avq")
-}
-speed_scale = 0.5
-
-[node name="ClownAnimator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_48avq")
-}
-
-[node name="ClownStanding" parent="." instance=ExtResource("15_abr13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92102, -0.818844, -2.53195)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 8.0
-one_shot = true
-autostart = true
-
 [node name="ClownAudio" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16999, 1.64285)
 script = ExtResource("16_pc5wc")
@@ -209,8 +174,55 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_rhdva")
 
+[node name="Decoration" type="Node" parent="."]
+
+[node name="hobbyhorse" parent="Decoration" instance=ExtResource("5_umjxg")]
+transform = Transform3D(0.735932, 0, -0.677056, 0, 1, 0, 0.677056, 0, 0.735932, -1.21177, 5.96046e-08, -1.27076)
+
+[node name="Cake" parent="Decoration" instance=ExtResource("14_rhvxc")]
+transform = Transform3D(0.0806083, 0, 0.0591802, 0, 0.1, 0, -0.0591802, 0, 0.0806083, -1.88284, 0.00226144, -0.122181)
+
+[node name="Balloon" parent="Decoration" instance=ExtResource("12_1o3so")]
+transform = Transform3D(0.005, 0, 2.32831e-10, 0, 0.005, 0, -2.32831e-10, 0, 0.005, -0.175, 1.3, -1.73)
+
+[node name="Teddy" parent="Decoration" instance=ExtResource("13_wcy3v")]
+transform = Transform3D(-0.105874, -2.86324e-09, 0.169678, 0.0238756, 0.19801, 0.0148977, -0.16799, 0.0281422, -0.104821, 1.58218, 0.0532905, -1.68544)
+
+[node name="BalloonAnimator" type="AnimationPlayer" parent="Decoration"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_48avq")
+}
+speed_scale = 0.5
+
+[node name="ClownAnimator" type="AnimationPlayer" parent="Decoration"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_48avq")
+}
+
+[node name="ClownStanding" parent="Decoration" instance=ExtResource("15_abr13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92102, -0.818844, -2.53195)
+
+[node name="Timer" type="Timer" parent="Decoration"]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="painted_wooden_chair_01_2k" parent="Decoration" instance=ExtResource("11_4r557")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00398584, 0, 1.14554)
+
+[node name="ShapeMatching_1" parent="." instance=ExtResource("9_7jt25")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.376702, 0.727212, 0.325899)
+
+[node name="ShapeMatching_2" parent="." instance=ExtResource("18_wngv1")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.00188416, 0.72926, 0.561373)
+
+[node name="ShapeMatching_3" parent="." instance=ExtResource("18_x0i5l")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.407995, 0.727987, 0.502156)
+
 [connection signal="action_triggered" from="ClownControl" to="." method="_on_clown_control_action_triggered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Decoration/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="room_base"]
 [editable path="door"]

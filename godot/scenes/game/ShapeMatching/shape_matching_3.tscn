@@ -1,50 +1,56 @@
 [gd_scene load_steps=8 format=3 uid="uid://cndu4oe70u1h"]
 
 [ext_resource type="Script" path="res://scenes/game/ShapeMatching/shape_matching.gd" id="1_d510i"]
-[ext_resource type="PackedScene" uid="uid://dk21emly304hg" path="res://scenes/game/ShapeMatching/lid1_dupli.tscn" id="2_eacuw"]
+[ext_resource type="PackedScene" uid="uid://1e6w5i0csn53" path="res://scenes/game/ShapeMatching/lid2.tscn" id="2_46nsp"]
 [ext_resource type="PackedScene" uid="uid://brc02av2dbbff" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="3_wufrx"]
 [ext_resource type="PackedScene" uid="uid://dkmb6t3nfp563" path="res://scenes/game/ShapeMatching/star.tscn" id="4_iknq7"]
-[ext_resource type="PackedScene" uid="uid://dg5p7aal641pg" path="res://scenes/game/ShapeMatching/triangle.tscn" id="5_sc4e2"]
 [ext_resource type="PackedScene" uid="uid://cn8tcbsea77n" path="res://scenes/game/ShapeMatching/cylinder.tscn" id="6_tx7i8"]
+[ext_resource type="PackedScene" uid="uid://dn4h1fkholod5" path="res://scenes/game/ShapeMatching/cube.tscn" id="7_em5vp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_04edl"]
+size = Vector3(1, 0.3, 1)
 
-[node name="ShapeMatching" type="Node3D"]
+[node name="ShapeMatching_3" type="Node3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 script = ExtResource("1_d510i")
 
-[node name="Lid1_Duplicate" parent="." instance=ExtResource("2_eacuw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84198, 0)
+[node name="Lid2" parent="." instance=ExtResource("2_46nsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.851279, 0)
 
 [node name="PuzzleBox" parent="." instance=ExtResource("3_wufrx")]
 
 [node name="Area3D" type="Area3D" parent="PuzzleBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.6, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_04edl")
 
 [node name="Area3D2" type="Area3D" parent="PuzzleBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D2"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_04edl")
 
 [node name="Area3D3" type="Area3D" parent="PuzzleBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.6, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D3"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_04edl")
 
 [node name="Star" parent="." instance=ExtResource("4_iknq7")]
-transform = Transform3D(0.989085, 0.00449707, -0.147275, -0.147343, 0.0301879, -0.988625, 0, 0.999534, 0.030521, -1.97529, 0.12754, 2.46302)
-
-[node name="Triangle" parent="." instance=ExtResource("5_sc4e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1446, 0.12754, 2.45078)
+transform = Transform3D(0.58303, -0.804767, -0.111468, -0.147343, 0.0301879, -0.988625, 0.798977, 0.592822, -0.100977, -5.69556, 0.12754, -1.50964)
 
 [node name="Cylinder" parent="." instance=ExtResource("6_tx7i8")]
-transform = Transform3D(0.358612, 0.646287, 0.67358, -0.874408, 0.485191, 0, -0.326815, -0.588984, 0.739114, -0.0109763, 0.12754, 2.45078)
+transform = Transform3D(0.358612, 0.646287, 0.67358, -0.874408, 0.485191, 0, -0.326815, -0.588984, 0.739114, -2.28844, 0.12754, 2.3856)
+
+[node name="Cube" parent="." instance=ExtResource("7_em5vp")]
+transform = Transform3D(0.833336, 0, -0.552766, 0, 1, 0, 0.552766, 0, 0.833336, -0.879138, 2.14178, 0.53306)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("6_tx7i8")]
+transform = Transform3D(0.761448, 0.639654, 0.105068, 0, 0.162086, -0.986777, -0.648226, 0.751379, 0.12342, 2.47906, 0.708318, 2.19905)
 
 [connection signal="body_entered" from="PuzzleBox/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="PuzzleBox/Area3D2" to="." method="_on_area_3d_2_body_entered"]
