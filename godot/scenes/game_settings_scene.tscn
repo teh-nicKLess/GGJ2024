@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_w6tmj"]
 [ext_resource type="PackedScene" uid="uid://nbaodrlopo7y" path="res://ui/components/game_settings.tscn" id="2_qsqie"]
 [ext_resource type="Theme" uid="uid://d22mpqutkotsu" path="res://ui/theme.tres" id="3_unbh4"]
-[ext_resource type="AudioStream" uid="uid://dk1ghodfkitej" path="res://music/main-menu.wav" id="5_uqqcj"]
+[ext_resource type="AudioStream" uid="uid://bk4vkcahht8vo" path="res://music/main-menu.ogg" id="5_28x3q"]
 
 [node name="GameSettingsScene" type="Node2D"]
 script = ExtResource("1_3764u")
@@ -41,6 +41,6 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_uqqcj")
+stream = ExtResource("5_28x3q")
 autoplay = true
 bus = &"Music"

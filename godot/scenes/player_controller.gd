@@ -99,6 +99,9 @@ func _update_aim_dot():
 
 func _grab_object():
 	var object = raycast.get_collider()
+	if not object:
+		return
+	object_target.position.z = - camera.global_position.distance_to(object.global_position)
 	if object and object is RigidBody3D:
 		grabbed_object = object
 		object.set_freeze_enabled(true)
@@ -107,7 +110,7 @@ func _grab_object():
 func _release_object():
 	grabbed_object.set_freeze_enabled(false)
 	grabbed_object = null
-	object_target.position.z = -0.5
+	#object_target.position.z = -0.5
 
 
 func _update_grabbed_position(delta):

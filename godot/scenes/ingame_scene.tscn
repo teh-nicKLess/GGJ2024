@@ -49,6 +49,7 @@ size = Vector2(0.01, 0.01)
 script = ExtResource("1_objyc")
 
 [node name="PlayerController" parent="." instance=ExtResource("2_hckl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05078)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tjssu")

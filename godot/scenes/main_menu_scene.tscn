@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv2y18ye8j7o0"]
+[gd_scene load_steps=9 format=3 uid="uid://dv2y18ye8j7o0"]
 
 [ext_resource type="Script" path="res://scenes/main_menu_scene.gd" id="1_1foie"]
 [ext_resource type="PackedScene" uid="uid://cik30de5gaaah" path="res://scenes/ingame_scene.tscn" id="2_nl5i6"]
 [ext_resource type="PackedScene" uid="uid://g4qhvbvdm62w" path="res://scenes/game_settings_scene.tscn" id="3_dgs4d"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="3_kf1us"]
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="4_fnufg"]
-[ext_resource type="AudioStream" uid="uid://dk1ghodfkitej" path="res://music/main-menu.wav" id="6_xhqvp"]
+[ext_resource type="Texture2D" uid="uid://cn3u6buf08nc0" path="res://assets/2d/Godot_Stammtisch_Karlsruhe_Logo.png" id="5_k8tgc"]
+[ext_resource type="AudioStream" uid="uid://bk4vkcahht8vo" path="res://music/main-menu.ogg" id="6_g0xy8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ikbh"]
 font_size = 8
@@ -43,6 +44,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 13
 text = "new_game"
 
 [node name="SettingsButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
@@ -50,6 +52,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 13
 text = "settings"
 
 [node name="ExitButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
@@ -57,16 +60,27 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 13
 text = "leave_game"
 
 [node name="Credits" type="MarginContainer" parent="UI/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 25
 
-[node name="Label" type="Label" parent="UI/CenterContainer/VBoxContainer/Credits"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/VBoxContainer/Credits"]
 layout_mode = 2
-text = "credits"
+
+[node name="TextureRect" type="TextureRect" parent="UI/CenterContainer/VBoxContainer/Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34.17)
+layout_mode = 2
+texture = ExtResource("5_k8tgc")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/CenterContainer/VBoxContainer/Credits/VBoxContainer"]
+layout_mode = 2
+text = "made by Gero, Gunter, Hendrik and Matze"
 label_settings = SubResource("LabelSettings_2ikbh")
 horizontal_alignment = 1
 
@@ -75,6 +89,6 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_xhqvp")
+stream = ExtResource("6_g0xy8")
 autoplay = true
 bus = &"Music"

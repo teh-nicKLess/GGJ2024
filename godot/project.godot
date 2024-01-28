@@ -98,3 +98,4 @@ locale/translations=PackedStringArray("res://i18n/translation.de.translation", "
 [rendering]
 
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/use_taa=true

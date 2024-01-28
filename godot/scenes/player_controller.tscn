@@ -7,7 +7,7 @@
 script = ExtResource("1_u4f05")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.153, 1.11297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
 fov = 70.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]

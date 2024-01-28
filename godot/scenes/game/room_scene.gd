@@ -12,10 +12,9 @@ func _ready():
 	$room_base/room_inverted.visible = true
 
 	clown_control.trigger_at(3.0, "start_game")
+	
+	$BalloonAnimator.play("balloon_floating")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _input(event):
@@ -39,3 +38,7 @@ func _on_clown_control_action_triggered(action: String) -> void:
 		waiting_for_player_movement = action
 		player_movement_counter = 0
 
+
+
+func _on_timer_timeout():
+	$ClownAnimator.play("clown_show")
