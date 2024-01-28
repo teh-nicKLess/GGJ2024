@@ -1,4 +1,11 @@
 
+Code revive
+JSON updaten
+JSON übersetzten
+
+
+
+
 Clown-Controller:
 
 Logik für Agitation einbauen

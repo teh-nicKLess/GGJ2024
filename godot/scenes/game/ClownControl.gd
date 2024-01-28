@@ -4,6 +4,7 @@ signal action_triggered(action:String)
 
 @onready var subtitles: Label = $MarginContainer/Subtitles
 @onready var debug: Label = $MarginContainer/Debug
+@onready var clown_audio: AudioStreamPlayer3D = $"../ClownAudio"
 
 const BOX_HIT_COOLDOWN := 0.1 # cooldown factor per second
 const AGITATION_FACTOR := 0.1 # higher means clows is agitated quicker
@@ -22,10 +23,16 @@ var debug_action_timeout := 0.0
 var trigger_queue := []
 var trigger_after_text := ""
 var text_queue := []
+var last_rule_idx := 0
+var game_level := 0
 
 func _ready() -> void:
     var file = FileAccess.get_file_as_string("res://settings/clown_ctrl.json")
     ctrl = JSON.parse_string(file)
+    var idx = 1
+    for rule in ctrl:
+        rule["id"] = idx
+        idx += 1
 
 func _process(delta: float) -> void:
 
@@ -44,6 +51,7 @@ func _process(delta: float) -> void:
                  "\nagit=" + str(agitation_level) + \
                  "\nsolved=" + str(solved_blocks_count) + \
                  "\nest=" + str(expected_solving_time) + \
+                 "\nisto=" + str(is_timing_out) + \
                  "\naction=" + debug_action
     if debug_action and level_timer >= debug_action_timeout:
         debug_action = ""
@@ -70,11 +78,12 @@ func _process(delta: float) -> void:
             call_trigger(text_queue[0][1])
             text_queue.remove_at(0)
 
-func reset_level(expected_solving_time: int):
-    agitation_level = 0
-    solved_blocks_count = 0
+func reset_level(level: int, expected_solving_time: int):
+    self.agitation_level = 0
+    self.solved_blocks_count = 0
     self.expected_solving_time = expected_solving_time
-    level_timer = 0
+    self.level_timer = 0
+    self.game_level = level
 
 func trigger_at(time: float, action: String):
     trigger_queue.append([time, action])
@@ -89,6 +98,8 @@ func trigger(action: String) -> void:
         box_hit_count += 1
     elif action == "one_solved":
         solved_blocks_count += 1
+    elif action == "random_noise":
+        clown_audio.play_random_noise(agitation_level)
 
     # find text
     var matching_rules = []
@@ -96,9 +107,20 @@ func trigger(action: String) -> void:
         if rule_matches(rule, action):
             matching_rules.append(rule)
 
+
     if matching_rules:
         var rule = matching_rules[randi() % matching_rules.size()]
         enqueue_text(rule["text"], rule["action"])
+        if matching_rules.size() > 1 and last_rule_idx == rule["id"]:
+            # prevent repetition of texts
+            while last_rule_idx == rule["id"]:
+                rule = matching_rules[randi() % matching_rules.size()]
+        last_rule_idx = rule["id"]
+
+        if rule["action"]:
+            enqueue_text(rule["text"], rule["action"])
+        else:
+            enqueue_text(rule["text"], "")
 
 func rule_matches(rule, action:String) -> bool:
 
@@ -109,6 +131,11 @@ func rule_matches(rule, action:String) -> bool:
     if condition.has("ag0") and agitation_level != 0: return false
     if condition.has("ag1") and agitation_level != 1: return false
     if condition.has("ag2") and agitation_level != 2: return false
+    if condition.has("l0") and agitation_level != 0: return false
+    if condition.has("l1") and game_level != 1: return false
+    if condition.has("l2") and game_level != 2: return false
+    if condition.has("l3") and game_level != 3: return false
+    if condition.has("l4") and game_level != 4: return false
     if condition.has("t0") and is_timing_out: return false
     if condition.has("t1") and (not is_timing_out): return false
     if condition.has("s0") and solved_blocks_count != 0: return false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnth0gfsj10u4"]
+[gd_scene load_steps=24 format=3 uid="uid://cnth0gfsj10u4"]
 
 [ext_resource type="Script" path="res://scenes/game/room_scene.gd" id="1_22d2t"]
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://ds8j88t8fgllm" path="res://assets/models/deco/teddy_bear.glb" id="13_wcy3v"]
 [ext_resource type="PackedScene" uid="uid://ccjaewgp6bver" path="res://assets/models/deco/the_cake_is_a_lie.glb" id="14_rhvxc"]
 [ext_resource type="PackedScene" uid="uid://d1kiqhdigdofv" path="res://scenes/game/clown_standing.tscn" id="15_abr13"]
+[ext_resource type="Script" path="res://scenes/game/ClownAudio.gd" id="16_pc5wc"]
+[ext_resource type="AudioStream" uid="uid://dmy5v0wu0spu5" path="res://assets/background.ogg" id="17_bye0h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 
@@ -189,7 +191,15 @@ wait_time = 8.0
 one_shot = true
 autostart = true
 
-[connection signal="action_triggered" from="ClownControl" to="." method="_on_clown_control_action_triggered"]
+[node name="ClownAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16999, 1.64285)
+script = ExtResource("16_pc5wc")
+
+[node name="BackgroundNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_bye0h")
+volume_db = -9.967
+autoplay = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="room_base"]
