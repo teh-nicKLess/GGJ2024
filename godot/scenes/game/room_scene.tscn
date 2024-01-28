@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dy0sqxuqixdtd" path="res://assets/models/room_base/room_base.glb" id="1_bm11y"]
 [ext_resource type="PackedScene" uid="uid://djq65ic1pbyht" path="res://scenes/game/Lamp.tscn" id="2_6t3bl"]
 [ext_resource type="Material" uid="uid://bhp8cc2yvf1yv" path="res://assets/models/room_base/room_base_mat.tres" id="3_7em1d"]
-[ext_resource type="PackedScene" uid="uid://brhkh3yp2ot5l" path="res://assets/models/simple_table/simple_table.tscn" id="3_xnqhc"]
+[ext_resource type="PackedScene" uid="uid://ce672q8mnvxuh" path="res://assets/models/simple_table/operating_table.tscn" id="4_ins1j"]
 [ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
 [ext_resource type="PackedScene" uid="uid://bndnc0acednro" path="res://assets/models/door/door.glb" id="8_2crcs"]
 [ext_resource type="PackedScene" uid="uid://dee3m2coregme" path="res://scenes/game/ShapeMatching/shape_matching.tscn" id="9_7jt25"]
@@ -107,8 +107,8 @@ material_override = ExtResource("3_7em1d")
 mesh = SubResource("ArrayMesh_o3xnf")
 skeleton = NodePath("")
 
-[node name="simple_table" parent="room_base" instance=ExtResource("3_xnqhc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.532, 0, 0)
+[node name="operating_table" parent="room_base" instance=ExtResource("4_ins1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.525137, 0, -2.29543e-08)
 
 [node name="Ceiling" type="StaticBody3D" parent="room_base"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.111, 0)
@@ -134,7 +134,7 @@ transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1.01619, 0
 material_override = ExtResource("9_yrkcg")
 
 [node name="ShapeMatching" parent="." instance=ExtResource("9_7jt25")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.052, 0, 0.753968, 0.517744)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.052, 0, 0.728227, 0.517744)
 
 [node name="ClownControl" type="CanvasLayer" parent="."]
 visible = false
@@ -180,7 +180,6 @@ speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_48avq")
 }
-speed_scale = 0.5
 
 [node name="ClownStanding" parent="." instance=ExtResource("15_abr13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92102, -0.818844, -2.53195)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://brhkh3yp2ot5l"]
+[gd_scene load_steps=7 format=3 uid="uid://brhkh3yp2ot5l"]
 
+[ext_resource type="PackedScene" uid="uid://cvuau2bgekqe7" path="res://assets/models/simple_table/operating_table.glb" id="2_b5ig4"]
 [ext_resource type="Material" uid="uid://c0djk54dcpbb5" path="res://assets/models/simple_table/scratched_steel.tres" id="2_v3tt1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_giiux"]
@@ -49,3 +50,5 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000244141, 0.676284, 0.00152588)
 shape = SubResource("BoxShape3D_t7a63")
+
+[node name="operating_table" parent="." instance=ExtResource("2_b5ig4")]

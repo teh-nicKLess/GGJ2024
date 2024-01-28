@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce672q8mnvxuh"]
+
+[ext_resource type="PackedScene" uid="uid://cvuau2bgekqe7" path="res://assets/models/simple_table/operating_table.glb" id="1_djx2h"]
+[ext_resource type="Material" uid="uid://c0djk54dcpbb5" path="res://assets/models/simple_table/scratched_steel.tres" id="2_mpw5p"]
+
+[node name="operating_table" instance=ExtResource("1_djx2h")]
+
+[node name="Table_new" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_mpw5p")
+
+[node name="LegsRung" parent="Table_new" index="1"]
+surface_material_override/0 = ExtResource("2_mpw5p")
