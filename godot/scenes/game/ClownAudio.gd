@@ -1,7 +1,7 @@
 extends AudioStreamPlayer3D
 
 var subs2res
-var streams
+var streams := {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

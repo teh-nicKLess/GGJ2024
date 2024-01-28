@@ -23,11 +23,16 @@ var debug_action_timeout := 0.0
 var trigger_queue := []
 var trigger_after_text := ""
 var text_queue := []
+var last_rule_idx := 0
 var game_level := 0
 
 func _ready() -> void:
     var file = FileAccess.get_file_as_string("res://settings/clown_ctrl.json")
     ctrl = JSON.parse_string(file)
+    var idx = 1
+    for rule in ctrl:
+        rule["id"] = idx
+        idx += 1
 
 func _process(delta: float) -> void:
 
@@ -46,6 +51,7 @@ func _process(delta: float) -> void:
                  "\nagit=" + str(agitation_level) + \
                  "\nsolved=" + str(solved_blocks_count) + \
                  "\nest=" + str(expected_solving_time) + \
+                 "\nisto=" + str(is_timing_out) + \
                  "\naction=" + debug_action
     if debug_action and level_timer >= debug_action_timeout:
         debug_action = ""
@@ -92,7 +98,8 @@ func trigger(action: String) -> void:
         box_hit_count += 1
     elif action == "one_solved":
         solved_blocks_count += 1
-    elif action == ""
+    elif action == "random_noise":
+        clown_audio.play_random_noise(agitation_level)
 
     # find text
     var matching_rules = []
@@ -100,9 +107,20 @@ func trigger(action: String) -> void:
         if rule_matches(rule, action):
             matching_rules.append(rule)
 
+
     if matching_rules:
         var rule = matching_rules[randi() % matching_rules.size()]
         enqueue_text(rule["text"], rule["action"])
+        if matching_rules.size() > 1 and last_rule_idx == rule["id"]:
+            # prevent repetition of texts
+            while last_rule_idx == rule["id"]:
+                rule = matching_rules[randi() % matching_rules.size()]
+        last_rule_idx = rule["id"]
+
+        if rule["action"]:
+            enqueue_text(rule["text"], rule["action"])
+        else:
+            enqueue_text(rule["text"], "")
 
 func rule_matches(rule, action:String) -> bool:
 
