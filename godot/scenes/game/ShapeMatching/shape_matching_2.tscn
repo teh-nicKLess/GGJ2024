@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://2pn70i6517rp"]
+
+[ext_resource type="Script" path="res://scenes/game/ShapeMatching/shape_matching.gd" id="1_rosgt"]
+[ext_resource type="PackedScene" uid="uid://dk21emly304hg" path="res://scenes/game/ShapeMatching/lid1_dupli.tscn" id="2_0alyt"]
+[ext_resource type="PackedScene" uid="uid://brc02av2dbbff" path="res://scenes/game/ShapeMatching/puzzle_box.tscn" id="3_4hp37"]
+[ext_resource type="PackedScene" uid="uid://dkmb6t3nfp563" path="res://scenes/game/ShapeMatching/star.tscn" id="4_d7t4a"]
+[ext_resource type="PackedScene" uid="uid://dg5p7aal641pg" path="res://scenes/game/ShapeMatching/triangle.tscn" id="5_jt8li"]
+[ext_resource type="PackedScene" uid="uid://cn8tcbsea77n" path="res://scenes/game/ShapeMatching/cylinder.tscn" id="6_ybye1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04edl"]
+
+[node name="ShapeMatching" type="Node3D"]
+script = ExtResource("1_rosgt")
+
+[node name="Lid1_Duplicate" parent="." instance=ExtResource("2_0alyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84198, 0)
+
+[node name="PuzzleBox" parent="." instance=ExtResource("3_4hp37")]
+
+[node name="Area3D" type="Area3D" parent="PuzzleBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_04edl")
+
+[node name="Area3D2" type="Area3D" parent="PuzzleBox"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_04edl")
+
+[node name="Area3D3" type="Area3D" parent="PuzzleBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleBox/Area3D3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_04edl")
+
+[node name="Star" parent="." instance=ExtResource("4_d7t4a")]
+transform = Transform3D(0.989085, 0.00449707, -0.147275, -0.147343, 0.0301879, -0.988625, 0, 0.999534, 0.030521, -1.97529, 0.12754, 2.46302)
+
+[node name="Triangle" parent="." instance=ExtResource("5_jt8li")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1446, 0.12754, 2.45078)
+
+[node name="Cylinder" parent="." instance=ExtResource("6_ybye1")]
+transform = Transform3D(0.358612, 0.646287, 0.67358, -0.874408, 0.485191, 0, -0.326815, -0.588984, 0.739114, -0.0109763, 0.12754, 2.45078)
+
+[connection signal="body_entered" from="PuzzleBox/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="PuzzleBox/Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_entered" from="PuzzleBox/Area3D3" to="." method="_on_area_3d_3_body_entered"]

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ce672q8mnvxuh" path="res://assets/models/simple_table/operating_table.tscn" id="4_ins1j"]
 [ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
 [ext_resource type="PackedScene" uid="uid://bndnc0acednro" path="res://assets/models/door/door.glb" id="8_2crcs"]
-[ext_resource type="PackedScene" uid="uid://dee3m2coregme" path="res://scenes/game/ShapeMatching/shape_matching.tscn" id="9_7jt25"]
+[ext_resource type="PackedScene" uid="uid://dee3m2coregme" path="res://scenes/game/ShapeMatching/shape_matching_1.tscn" id="9_7jt25"]
 [ext_resource type="Material" uid="uid://wbxo21w6ylv3" path="res://assets/models/door/door_mat.tres" id="9_yrkcg"]
 [ext_resource type="Script" path="res://scenes/game/ClownControl.gd" id="10_qo6ab"]
 [ext_resource type="PackedScene" uid="uid://68etf3dwhwqj" path="res://assets/models/chair/painted_wooden_chair_01_2k.glb" id="11_4r557"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ccjaewgp6bver" path="res://assets/models/deco/the_cake_is_a_lie.glb" id="14_rhvxc"]
 [ext_resource type="PackedScene" uid="uid://d1kiqhdigdofv" path="res://scenes/game/clown_standing.tscn" id="15_abr13"]
 [ext_resource type="Script" path="res://scenes/game/ClownAudio.gd" id="16_pc5wc"]
-[ext_resource type="AudioStream" uid="uid://dmy5v0wu0spu5" path="res://assets/background.ogg" id="17_bye0h"]
+[ext_resource type="AudioStream" uid="uid://3nsme0sibp8j" path="res://assets/background.ogg" id="17_bye0h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
 

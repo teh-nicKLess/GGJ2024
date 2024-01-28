@@ -15,7 +15,7 @@ normal_enabled = true
 normal_texture = ExtResource("4_5a3tr")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mhgl1"]
-size = Vector3(0.0369141, 0.0369141, 0.0375)
+size = Vector3(0.75, 0.75, 0.75)
 
 [node name="Cube" type="RigidBody3D"]
 mass = 0.05
@@ -23,13 +23,11 @@ freeze_mode = 1
 continuous_cd = true
 
 [node name="cube" parent="." instance=ExtResource("1_31tew")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 
 [node name="Cube_002" parent="cube" index="0"]
 material_override = SubResource("StandardMaterial3D_vx2fn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.76548e-05, 9.76548e-05, 1.86265e-09)
 shape = SubResource("BoxShape3D_mhgl1")
 
 [editable path="cube"]

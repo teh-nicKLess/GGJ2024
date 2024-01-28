@@ -24,7 +24,7 @@ normal_texture = ExtResource("5_2c1h6")
 [sub_resource type="SphereShape3D" id="SphereShape3D_6wx52"]
 radius = 0.2
 
-[node name="Node3D" type="Node3D"]
+[node name="Lid1" type="Node3D"]
 script = ExtResource("1_prpug")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -36,7 +36,6 @@ shape = SubResource("BoxShape3D_ggyj0")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-visible = false
 shape = SubResource("ConcavePolygonShape3D_tbmf7")
 
 [node name="lid01" parent="StaticBody3D" instance=ExtResource("2_x6g8h")]
