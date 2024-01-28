@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dl7ky0tci4vpm"
-path="res://.godot/imported/clown_thinkharder.ogg-73b5fcb4f240724e0c24b91a4958a04d.oggvorbisstr"
+path="res://.godot/imported/clown_thinkharder.ogg-5a39cb8ca6beee224e1b46f6b43ae75d.oggvorbisstr"
 
 [deps]
 
-source_file="res://assets/voicelines/clown_thinkharder.ogg"
-dest_files=["res://.godot/imported/clown_thinkharder.ogg-73b5fcb4f240724e0c24b91a4958a04d.oggvorbisstr"]
+source_file="res://assets/voicelines/old/clown_thinkharder.ogg"
+dest_files=["res://.godot/imported/clown_thinkharder.ogg-5a39cb8ca6beee224e1b46f6b43ae75d.oggvorbisstr"]
 
 [params]
 

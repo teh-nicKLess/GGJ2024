@@ -9,20 +9,20 @@
  I'm sooo glad you're finally awake!|3.0|
  I hope your head doesn't hurt so much.|5.0| ...aaand you got some sleep.|4.0|
  Very well.|1.0|
- Thank you for being here.|5.0|
+ Thank you for being here.|3.0|
  I'm sooo bored, soooo bored!|3.0|
  But I am sure,|2.0|
- I have your full understanding for that.|10.0|
- Welll... my friend! Let's get started then!|3.0|
- I have a few tricks up my sleeve,|2.0|
+ I have your full understanding for that.|5.0|
+ Welll... my friend! Let's get started then!|5.0|
+ I have a few tricks up my sleeve,|3.5|
  that are sure to make your eyes pop out of your head!|5.0|
- You'll scream out loud ... with joy!|3.0|
- And so will I!|2.0|
- Hahahahaa....!|3.0|
+ You'll scream out loud ... with joy!|4.0|
+ And so will I!|3.5|
+ Hahahahaa....!|4.0|
  You want to play with me, don't you?",
  "action": "game_intro_waiting_player"
 },
-{"action": "prepare_level_0", "text": "I'll take that as a \"Yes\".|5| Let's go!|1|", "trigger": "continue_level_0", "cond": []},
+{"action": "prepare_level_0", "text": "I'll take that as a \"Yes\".|2| Let's go!|2|", "trigger": "continue_level_0", "cond": []},
 
 
 
@@ -30,44 +30,44 @@
  "trigger": "prepare_level_0", "cond": [],
  "text": "
  I've prepared something great for you here.
- You like that, don't you?|6|
+ You like that, don't you?|7|
  It better be, I've put a lot of effort into it!|4|
- So, have you figured out what you're supposed to do yet? And you're such a clever guy!
+ So, have you figured out what you're supposed to do yet? And you're such a clever guy!|7|
  Wonderful, truly wonderful!|2|
- Find the right clog for every hole.|5|
+ Find the right clog for every hole.|4|
  Exactly one in each!|3|
- That's definitely doable, don't you think?|3|
+ That's definitely doable, don't you think?|3.5|
  Great! Let's go then.|3|
- If you manage it, you might get a reward!|3|",
+ If you manage it, you might get a reward!|4|",
  "action": "level_0_ready",
 },
 
 {
  "trigger": "level_0_finished", "cond": [],
  "text": "
-    That was so much fun!|2|
-    Now you probably want your reward!|3|
-    Well, not yet... |3|",
+	That was so much fun!|2|
+	Now you probably want your reward!|3|
+	Well, not yet... |3|",
  "action": "prepare_level_1",
 },
 
 {
  "trigger": "prepare_level_1", "cond": [],
  "text": "
-    Tadaaaa!|2|
-    I'm sure I've outdone myself here!|5|
-    We're both going to have a blast!|6|
-    Now play! |1|
-    And remember, only one block in each hole! Only ONE block! |1|",
+	Tadaaaa!|2|
+	I'm sure I've outdone myself here!|4|
+	We're both going to have a blast!|3|
+	Now play! |1.5|
+	And remember, only one block in each hole! Only ONE block! |7|",
  "action": "level_1_ready",
 },
 
 {
  "trigger": "level_1_finished", "cond": [],
  "text": "
-    Well, that was terrific! |3|
-    You're doing really well! |2|
-    Surely you're already looking forward to your reward!!! |1|",
+	Well, that was terrific! |3|
+	You're doing really well! |2|
+	Surely you're already looking forward to your reward!!! |1|",
  "action": "prepare_level_2",
 },
 
@@ -177,43 +177,43 @@
  "cond": ["ag0"]},
 
 {"action": null, "text": "I'm coming back now!", "trigger": "timeout_kill",
-    "cond": ["ag1"]},
+	"cond": ["ag1"]},
 {"action": null, "text": "Aaaand... finish!", "trigger": "timeout_kill",
-    "cond": ["ag1"]},
+	"cond": ["ag1"]},
 {"action": null, "text": "Too bad! The time is up!", "trigger": "timeout_kill",
-    "cond": ["ag1"]},
+	"cond": ["ag1"]},
 
 
 
 {"action": null, "text": "No, that's too fr\u00fch!", "trigger": "one_solved",
-    "cond": ["s1", "e0"]},
+	"cond": ["s1", "e0"]},
 {"action": null, "text": "You think you're particularly clever! Unfortunately, the fast ones don't win anything here.", "trigger": "one_solved",
-    "cond": ["s1", "e0"]},
+	"cond": ["s1", "e0"]},
 {"action": null, "text": "Are you sure this is the right solution?", "trigger": "one_solved",
-    "cond": ["s1", "e0"]},
+	"cond": ["s1", "e0"]},
 {"action": null, "text": "You haven't really thought about it, take more time!", "trigger": "one_solved",
-    "cond": ["s1", "e0"]},
+	"cond": ["s1", "e0"]},
 {"action": null, "text": "No, No, No, I'm warning you!", "trigger": "one_solved",
-    "cond": ["s2", "e1"]},
+	"cond": ["s2", "e1"]},
 {"action": null, "text": "Don't make a mistake! I'm warning you!", "trigger": "one_solved",
-    "cond": ["s2", "e1"]},
+	"cond": ["s2", "e1"]},
 {"action": null, "text": "Do you want to destroy all my work? Think before you do anything!", "trigger": "one_solved",
-    "cond": ["s2", "e1"]},
+	"cond": ["s2", "e1"]},
 {"action": null, "text": "You want to sabotage me! I'm warning you for the last time!", "trigger": "one_solved",
-    "cond": ["s2", "e1"]},
+	"cond": ["s2", "e1"]},
 {"action": "kill", "text": "I warned you! It's over now!", "trigger": "one_solved",
-    "cond": ["s3", "e2"]},
+	"cond": ["s3", "e2"]},
 {"action": "kill", "text": "OK, this is what you wanted! Enough now!", "trigger": "one_solved",
-    "cond": ["s3", "e2"]},
+	"cond": ["s3", "e2"]},
 
 
 
 {"action": "kill", "text": "Oh no! You'll never do that again!", "trigger": "fallen_item",
-    "cond": []},
+	"cond": []},
 {"action": "kill", "text": "You dropped a stone! You will never do that again!", "trigger": "fallen_item",
-    "cond": []},
+	"cond": []},
 {"action": "kill", "text": "Saboteur! You'll never do that again!", "trigger": "fallen_item",
-    "cond": []},
+	"cond": []},
 
 
 {"action": "kill", "text": "No! These are not the rules! That's the end of it!", "trigger": "double_fill", "cond": []},
