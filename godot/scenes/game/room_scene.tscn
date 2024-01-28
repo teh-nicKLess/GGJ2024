@@ -145,6 +145,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Debug" type="Label" parent="ClownControl/MarginContainer"]
+visible = false
 layout_mode = 2
 text = "Debug"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://h3gltiwq4elo"]
+[gd_scene load_steps=20 format=3 uid="uid://h3gltiwq4elo"]
 
 [ext_resource type="Script" path="res://scenes/game/clown_end_controller.gd" id="1_fetdv"]
 [ext_resource type="PackedScene" uid="uid://cql8l2tyljwan" path="res://assets/models/clown/clown.glb" id="1_g7wus"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="7_mtoiw"]
 [ext_resource type="Texture2D" uid="uid://cdrmta4cyr4r4" path="res://assets/decals/Blood Spray 4.png" id="8_u5o5i"]
 [ext_resource type="Texture2D" uid="uid://nng0baupgwhu" path="res://assets/decals/Blood Pool 2.png" id="9_ev7p5"]
+[ext_resource type="AudioStream" uid="uid://dr5i0ticwbpvm" path="res://music/pistol_shot.wav" id="12_n1jnx"]
 
 [sub_resource type="Curve3D" id="Curve3D_7w0yx"]
 bake_interval = 0.05
@@ -224,5 +225,9 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_dg4qn")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_n1jnx")
+autoplay = true
 
 [editable path="clown"]

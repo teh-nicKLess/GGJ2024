@@ -121,8 +121,8 @@ func handle_level_2_finished():
 
 func handle_level_0_prepared():
 	game_is_on = true
-	clown_control.reset_level(0, 3600)
-	level_timeout_timer = 3600
+	clown_control.reset_level(0, 300)
+	level_timeout_timer = 300
 
 func handle_level_1_prepared():
 	game_is_on = true
