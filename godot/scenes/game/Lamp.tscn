@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://djq65ic1pbyht"]
+[gd_scene load_steps=16 format=3 uid="uid://djq65ic1pbyht"]
 
 [ext_resource type="Script" path="res://scenes/game/Lamp.gd" id="1_jumee"]
 
@@ -112,6 +112,90 @@ shadow_mesh = SubResource("ArrayMesh_l2k54")
 height = 0.0773619
 radius = 0.200031
 
+[sub_resource type="Animation" id="Animation_fxf7w"]
+resource_name = "lights_off"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.2, -0.481628, 0.879719, -0.1, -0.448832, 0.1, -0.311804, 0.309754, -0.1, 0.121133, 0.1, 0.899522, -0.00429317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.668666, -0.25, 0, 0.2, -0.481628, 0.563235, -0.1, -0.448832, 0.1, -0.311804, 0.0495435, -0.1, 0.121133, 0.1, 0.899522, -0.00429317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7)
+}
+
+[sub_resource type="Animation" id="Animation_sjikt"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_20up2"]
+resource_name = "lights_on"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.43986, -0.1, -0.318534, 0.1, 0.011216, 0.031598, -0.2, 0.00672958, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.888499, -0.2, -0.123376, 0.2, -0.536124, 0.0248684, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ec8ih"]
+_data = {
+"RESET": SubResource("Animation_sjikt"),
+"lights_off": SubResource("Animation_fxf7w"),
+"lights_on": SubResource("Animation_20up2")
+}
+
 [node name="Lamp" type="RigidBody3D"]
 script = ExtResource("1_jumee")
 
@@ -146,3 +230,10 @@ light_energy = 0.5
 shadow_enabled = true
 omni_range = 0.22
 omni_attenuation = 0.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ec8ih")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

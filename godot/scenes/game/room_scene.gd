@@ -153,15 +153,21 @@ func fade_in_scene():
 	pass
 
 func prepare_level_0():
+	$room_base/Ceiling/JoltConeTwistJoint3D/Lamp.flicker()
 	_prepare_level(0)
 
 func prepare_level_1():
+	$room_base/Ceiling/JoltConeTwistJoint3D/Lamp.flicker()
 	_prepare_level(1)
 
 func prepare_level_2():
+	$room_base/Ceiling/JoltConeTwistJoint3D/Lamp.flicker()
 	_prepare_level(2)
 
 func _prepare_level(number):
+	# Wait for the lights to go out
+	await get_tree().create_timer(0.8).timeout
+	
 	var table = find_child("operating_table")
 	if current_puzzle:
 		current_puzzle.get_parent().remove_child(current_puzzle)
@@ -197,6 +203,8 @@ func _prepare_level(number):
 		next.connect("level_solved", handle_level_2_finished)
 
 func play_ending_scene():
+	$room_base/Ceiling/JoltConeTwistJoint3D/Lamp.flicker()
+	
 	var table = find_child("operating_table")
 	var puzzle = table.find_child("ShapeMatching*")
 	var chair = find_child("painted_wooden_chair_01_2k")

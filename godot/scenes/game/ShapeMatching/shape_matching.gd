@@ -1,6 +1,6 @@
 extends Node3D
 
-var number_solved = 0
+var number_contents = [0,0,0]
 
 signal box_hit
 signal one_solved
@@ -36,33 +36,37 @@ func _snap_object(_object : RigidBody3D, snap_position : Vector3):
 	object_snapping.emit(snap_position)
 
 
-
 func _on_area_3d_body_entered(body):
 	print("%s in hole 3 of %s" % [body.name, name])
-	on_area_3d_any_body_entered(areas[0], body)
+	on_area_3d_any_body_entered(0, body)
 
 func _on_area_3d_2_body_entered(body):
 	print("%s in hole 3 of %s" % [body.name, name])
-	on_area_3d_any_body_entered(areas[1], body)
+	on_area_3d_any_body_entered(1, body)
 
 func _on_area_3d_3_body_entered(body):
 	print("%s in hole 3 of %s" % [body.name, name])
-	on_area_3d_any_body_entered(areas[2], body)
+	on_area_3d_any_body_entered(2, body)
 
-func on_area_3d_any_body_entered(area, _body):
-	var number_contents = area.get_overlapping_bodies().size()
-	if number_contents == 2:
+func on_area_3d_any_body_entered(area_id, _body):
+	number_contents[area_id] += areas[area_id].get_overlapping_bodies().size()
+	
+	if number_contents[area_id] == 2:
 		double_fill.emit()
 		print("double_fill")
 		return
 	
 	var number_contents_sum = 0
 	var solved = true
-	for section in areas:
-		var num_contents = section.get_overlapping_bodies().size()
-		number_contents_sum += num_contents
-		solved = solved && num_contents == 1
-		
+	for section in areas.size():
+		number_contents_sum += number_contents[section]
+		solved = solved && number_contents[section] == 1
+	
+	# Remove the dropped shape to make room for another one
+	for shape in areas[area_id].get_overlapping_bodies():
+		remove_child(shape)
+		shape.queue_free()
+	
 	if solved:
 		print("level_solved")
 		level_solved.emit()
