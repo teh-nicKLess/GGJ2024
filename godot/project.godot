@@ -99,3 +99,4 @@ locale/translations=PackedStringArray("res://i18n/translation.de.translation", "
 
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/use_taa=true
+lights_and_shadows/positional_shadow/atlas_16_bits=false
