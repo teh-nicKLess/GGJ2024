@@ -143,11 +143,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="Debug" type="Label" parent="ClownControl/MarginContainer"]
-visible = false
 layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 8
 text = "Debug"
+autowrap_mode = 3
 
 [node name="Subtitles" type="Label" parent="ClownControl/MarginContainer"]
 layout_mode = 2

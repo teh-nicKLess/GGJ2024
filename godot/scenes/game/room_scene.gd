@@ -8,8 +8,8 @@ var shape_matching_3 = preload("res://scenes/game/ShapeMatching/shape_matching_3
 var clown_end = preload("res://scenes/game/clown_end.tscn")
 
 const PLAYER_MOVEMENT_COUNTER_MAX := 70
-const MIN_RANDOM_EVENT_TIME := 5.0
-const MAX_RANDOM_EVENT_TIME := 10.0
+const MIN_RANDOM_EVENT_TIME := 15.0
+const MAX_RANDOM_EVENT_TIME := 20.0
 
 var waiting_for_player_movement := ""
 var player_movement_counter := 0
@@ -30,12 +30,13 @@ func _ready():
 
 	$Decoration/BalloonAnimator.play("balloon_floating")
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 
 	if game_is_on:
 		random_event_timer -= delta
-		level_timeout_timer -= delta
+		level_timeout_timer -= delta * (16.0 if Input.is_key_pressed(KEY_SPACE) else 1.0)
 		if random_event_timer <= 0:
 			clown_control.trigger(random_event_type)
 			random_event_timer = randf_range(MIN_RANDOM_EVENT_TIME, MAX_RANDOM_EVENT_TIME)
@@ -101,7 +102,6 @@ func handle_one_solved():
 	clown_control.trigger("one_solved")
 	random_event_type = "random_talk"
 
-
 func handle_double_fill():
 	# this must be called when the user manages to insert a brick in a correct hole
 	clown_control.trigger("double_fill")
@@ -128,7 +128,7 @@ func handle_level_0_prepared():
 func handle_level_1_prepared():
 	game_is_on = true
 	clown_control.reset_level(1, 120)
-	level_timeout_timer = 180
+	level_timeout_timer = 120
 
 func handle_level_2_prepared():
 	game_is_on = true
