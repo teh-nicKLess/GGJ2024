@@ -1,5 +1,8 @@
 
-repspect is_game_on flag
+level 1 + level 2 texts must be synced
+
+in kill-screen: clown lies "in" one box
+
 stop random talks after kill
 play music after kill
 
@@ -7,11 +10,6 @@ level-setup:
 	remove floating box in level 0
 
 check box hit/fine tune
-
-start ending scene
-prepare levels functions
-fading functions
-
 
 kill on est???
 

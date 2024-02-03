@@ -5,14 +5,14 @@ extends Node2D
 
 func _ready() -> void:
 	fade_overlay.visible = true
-	
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+
 	if SaveGame.has_save():
 		SaveGame.load_game(get_tree())
-	
+
 	pause_overlay.game_exited.connect(_save_game)
-	
+
 	for shape_matching in find_children("ShapeMatching*"):
 		shape_matching.object_snapping.connect(snap_object)
 

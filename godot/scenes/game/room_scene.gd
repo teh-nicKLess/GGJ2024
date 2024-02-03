@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var clown_control: CanvasLayer = $ClownControl
 
+const cheats_enabled = true
+
 var shape_matching_1 = preload("res://scenes/game/ShapeMatching/shape_matching_1.tscn")
 var shape_matching_2 = preload("res://scenes/game/ShapeMatching/shape_matching_2.tscn")
 var shape_matching_3 = preload("res://scenes/game/ShapeMatching/shape_matching_3.tscn")
@@ -51,7 +53,7 @@ func _process(delta):
 func _input(event):
 
 	# this is for debugging - it emulates the events created by interaction with the bricks and the box
-	if false and event is InputEventKey and event.pressed:
+	if cheats_enabled and event is InputEventKey and event.pressed:
 		if event.keycode == KEY_B:
 			handle_box_hit()
 		if event.keycode == KEY_S:

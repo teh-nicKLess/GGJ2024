@@ -65,6 +65,7 @@ process_material = SubResource("ParticleProcessMaterial_77itt")
 draw_pass_1 = SubResource("QuadMesh_wqmn2")
 
 [node name="RoomScene" parent="." instance=ExtResource("2_bppc2")]
+unique_name_in_owner = true
 
 [node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
 visible = false

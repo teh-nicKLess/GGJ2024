@@ -34,23 +34,24 @@ func _input(event):
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
 		_mouse_position = event.relative
-		
+
 	# Receives mouse button input
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT: # attempt to grab object
-				if event.pressed:
-					if grabbed_object:
-						_release_object()
-					else:
-						_grab_object()
+				if %RoomScene.game_is_on:
+					if event.pressed:
+						if grabbed_object:
+							_release_object()
+						else:
+							_grab_object()
 			MOUSE_BUTTON_RIGHT: # attempt to activate object rotation
 				rotating_grabbed = event.pressed
 			MOUSE_BUTTON_WHEEL_UP: # attempt to push object away
 				if event.pressed and grabbed_object: _push_grabbed()
 			MOUSE_BUTTON_WHEEL_DOWN: # attempt to pull object towards player
 				if event.pressed and grabbed_object: _pull_grabbed()
-	
+
 	if event is InputEventKey:
 		match event.keycode:
 			KEY_SHIFT:
@@ -72,16 +73,16 @@ func _physics_process(delta):
 			_update_grabbed_position(delta)
 
 
-# Updates mouse look 
+# Updates mouse look
 func _update_mouselook():
 	# Only rotates mouse if the mouse is captured
 	#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-	
+
 	_mouse_position *= look_sensitivity
 	var yaw = _mouse_position.x
 	var pitch = _mouse_position.y
 	_mouse_position = Vector2(0, 0)
-	
+
 	# Prevents looking up/down too far
 	pitch = clamp(pitch, -60 - _total_pitch, 60 - _total_pitch)
 	yaw = clamp(yaw, - look_left_bound - _total_yaw, look_right_bound - _total_yaw)
@@ -135,7 +136,7 @@ func _update_grabbed_position(delta):
 	var target_pos = grabbed_object.global_position.lerp(object_target.global_position, 3.0 * delta)
 	var old_position = grabbed_object.global_position
 	grabbed_object.move_and_collide(target_pos - grabbed_object.global_position)
-	
+
 	if snapping_active:
 		if grabbed_object.global_position.distance_to(old_position) > unsnap_linear_threshold:
 			snapping_active = false
@@ -147,19 +148,19 @@ func _update_grabbed_position(delta):
 func _rotate_grabbed():
 	var old_rotation = grabbed_object.global_rotation
 	grabbed_object.rotate_x(_mouse_position.y * object_rotation_speed)
-	
+
 	if shift:
 		grabbed_object.rotate_z(_mouse_position.x * object_rotation_speed)
 	else:
 		grabbed_object.rotate_y(_mouse_position.x * object_rotation_speed)
 	_mouse_position = Vector2(0, 0)
-	
+
 	#if snapping_active:
 		#if grabbed_object.global_rotation.dot(old_rotation) > (1.0 - unsnap_angular_threshold):
 			#snapping_active = false
 		#else:
 			#grabbed_object.set_global_rotation(old_rotation)
-			
+
 
 
 func _pull_grabbed():
