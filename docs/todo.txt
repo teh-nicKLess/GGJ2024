@@ -1,9 +1,12 @@
 
+repspect is_game_on flag
+stop random talks after kill
+play music after kill
+
 level-setup:
 	remove floating box in level 0
 
 check box hit/fine tune
-random-noise play
 
 start ending scene
 prepare levels functions
