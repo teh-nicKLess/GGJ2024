@@ -52,20 +52,25 @@ func _process(delta):
 
 func _input(event):
 
-	# this is for debugging - it emulates the events created by interaction with the bricks and the box
-	if cheats_enabled and event is InputEventKey and event.pressed:
-		if event.keycode == KEY_B:
-			handle_box_hit()
-		if event.keycode == KEY_S:
-			handle_one_solved()
-		if event.keycode == KEY_0:
-			handle_level_0_finished()
-		if event.keycode == KEY_1:
-			handle_level_1_finished()
-		if event.keycode == KEY_2:
-			handle_level_2_finished()
-		if event.keycode == KEY_9:
-			play_ending_scene()
+	if event is InputEventKey and event.pressed:
+		# Toggle display of debug data
+		if event.keycode == KEY_H:
+			$ClownControl/MarginContainer/Debug.set_visible(not $ClownControl/MarginContainer/Debug.is_visible()) 
+		# this is for debugging - it emulates the events created by interaction with the bricks and the box
+		if cheats_enabled:
+			if event.keycode == KEY_B:
+				handle_box_hit()
+			if event.keycode == KEY_S:
+				handle_one_solved()
+			if event.keycode == KEY_0:
+				handle_level_0_finished()
+			if event.keycode == KEY_1:
+				handle_level_1_finished()
+			if event.keycode == KEY_2:
+				handle_level_2_finished()
+			if event.keycode == KEY_9:
+				play_ending_scene()
+	
 	elif event is InputEventMouseMotion and waiting_for_player_movement:
 		player_movement_counter += 1
 		if player_movement_counter >= PLAYER_MOVEMENT_COUNTER_MAX:
