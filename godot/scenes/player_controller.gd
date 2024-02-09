@@ -1,16 +1,21 @@
 class_name PlayerController extends Node3D
 
+## Shorthands for the children of PlayerController
 @onready var camera := $Camera3D
 @onready var raycast := $Camera3D/RayCast3D
 @onready var aim_dot := $Camera3D/RayCast3D/AimDot
 @onready var object_target := $Camera3D/ObjectTarget
 
+## Mouse Sensitivity for looking around
+## TODO: add setting for that
 @export_range(0.0, 1.0) var look_sensitivity: float = 0.25
-@export_range(0, 90) var look_left_bound: int = 45
-@export_range(0, 90) var look_right_bound: int = 45
 
-# Mouse state
-var _mouse_position = Vector2(0.0, 0.0)
+## Bounds that determine, how far the player can turn their head in each direction
+@export_range(0, 90) var view_bound_hori: int = 45
+@export_range(0, 90) var view_bound_vert: int = 60
+
+## Movement vector of the mouse for the current state. Is reset to (0, 0)
+var _last_mouse_movement = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
 var _total_yaw = 0.0
 
@@ -33,7 +38,7 @@ func _ready():
 func _input(event):
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
-		_mouse_position = event.relative
+		_last_mouse_movement = event.relative
 		
 	# Receives mouse button input
 	if event is InputEventMouseButton:
@@ -77,14 +82,14 @@ func _update_mouselook():
 	# Only rotates mouse if the mouse is captured
 	#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 	
-	_mouse_position *= look_sensitivity
-	var yaw = _mouse_position.x
-	var pitch = _mouse_position.y
-	_mouse_position = Vector2(0, 0)
+	_last_mouse_movement *= look_sensitivity
+	var yaw = _last_mouse_movement.x
+	var pitch = _last_mouse_movement.y
+	_last_mouse_movement = Vector2(0, 0)
 	
 	# Prevents looking up/down too far
-	pitch = clamp(pitch, -60 - _total_pitch, 60 - _total_pitch)
-	yaw = clamp(yaw, - look_left_bound - _total_yaw, look_right_bound - _total_yaw)
+	pitch = clamp(pitch, -view_bound_vert - _total_pitch, view_bound_vert - _total_pitch)
+	yaw = clamp(yaw, -view_bound_hori - _total_yaw, view_bound_hori - _total_yaw)
 
 	_total_pitch += pitch
 	_total_yaw += yaw
@@ -146,13 +151,13 @@ func _update_grabbed_position(delta):
 
 func _rotate_grabbed():
 	var old_rotation = grabbed_object.global_rotation
-	grabbed_object.rotate_x(_mouse_position.y * object_rotation_speed)
+	grabbed_object.rotate_x(_last_mouse_movement.y * object_rotation_speed)
 	
 	if shift:
-		grabbed_object.rotate_z(_mouse_position.x * object_rotation_speed)
+		grabbed_object.rotate_z(_last_mouse_movement.x * object_rotation_speed)
 	else:
-		grabbed_object.rotate_y(_mouse_position.x * object_rotation_speed)
-	_mouse_position = Vector2(0, 0)
+		grabbed_object.rotate_y(_last_mouse_movement.x * object_rotation_speed)
+	_last_mouse_movement = Vector2(0, 0)
 	
 	#if snapping_active:
 		#if grabbed_object.global_rotation.dot(old_rotation) > (1.0 - unsnap_angular_threshold):
