@@ -1,35 +1,15 @@
 
-trigger für hit box
-trigger für put in
-trigger für level done
+level 1 + level 2 texts must be synced
 
-play the voices
+in kill-screen: clown lies "in" one box
 
-start ending scene
-prepare levels functions
-fading functions
+stop random talks after kill
+play music after kill
 
+level-setup:
+	remove floating box in level 0
 
+check box hit/fine tune
 
-
-Clown-Controller:
-
-Logik für Agitation einbauen
-Signals für Kill einbauen
-Audio-Play der Texte
-
-Game:
-implement triggers for
-- continue_level_0
-- prepare_level_0
-- random_talk
-- timeout_kill
-- box_hit
-- one_solved
-- fallen_item
-- double_fill
-- level_0_finished
-- level_1_finished
-- level_2_finished
-- level_3_finished
+kill on est???
 

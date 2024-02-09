@@ -36,7 +36,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	var time_multiplier = 16.0 if Input.is_key_pressed(KEY_SPACE) else 1.0
-	
+
 	# update internals
 	level_timer += delta*time_multiplier
 	is_timing_out = false if expected_solving_time == 0 else (level_timer >= expected_solving_time)

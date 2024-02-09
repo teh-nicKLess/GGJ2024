@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var clown_control: CanvasLayer = $ClownControl
 
+const cheats_enabled = true
+
 var shape_matching_1 = preload("res://scenes/game/ShapeMatching/shape_matching_1.tscn")
 var shape_matching_2 = preload("res://scenes/game/ShapeMatching/shape_matching_2.tscn")
 var shape_matching_3 = preload("res://scenes/game/ShapeMatching/shape_matching_3.tscn")
@@ -51,7 +53,7 @@ func _process(delta):
 func _input(event):
 
 	# this is for debugging - it emulates the events created by interaction with the bricks and the box
-	if false and event is InputEventKey and event.pressed:
+	if cheats_enabled and event is InputEventKey and event.pressed:
 		if event.keycode == KEY_B:
 			handle_box_hit()
 		if event.keycode == KEY_S:
@@ -167,7 +169,7 @@ func prepare_level_2():
 func _prepare_level(number):
 	# Wait for the lights to go out
 	await get_tree().create_timer(0.8).timeout
-	
+
 	var table = find_child("operating_table")
 	if current_puzzle:
 		current_puzzle.get_parent().remove_child(current_puzzle)
@@ -188,7 +190,7 @@ func _prepare_level(number):
 	table.add_child(next)
 	next.position = Vector3(0.1, 0.73, 0)
 	next.rotate_y(PI/2.0)
-	
+
 	current_puzzle = next
 
 	next.connect("one_solved", handle_one_solved)
@@ -204,7 +206,7 @@ func _prepare_level(number):
 
 func play_ending_scene():
 	$room_base/Ceiling/JoltConeTwistJoint3D/Lamp.flicker()
-	
+
 	var table = find_child("operating_table")
 	var puzzle = table.find_child("ShapeMatching*")
 	var chair = find_child("painted_wooden_chair_01_2k")
@@ -215,7 +217,7 @@ func play_ending_scene():
 	table.queue_free()
 	chair.get_parent().remove_child(chair)
 	chair.queue_free()
-	
+
 	var ending = clown_end.instantiate()
 	ending.rotate_y(PI/2.0)
 	add_child(ending)
