@@ -4,10 +4,10 @@ extends Node3D
 
 const cheats_enabled = true
 
-var shape_matching_1 = preload("res://scenes/game/ShapeMatching/shape_matching_1.tscn")
-var shape_matching_2 = preload("res://scenes/game/ShapeMatching/shape_matching_2.tscn")
-var shape_matching_3 = preload("res://scenes/game/ShapeMatching/shape_matching_3.tscn")
-var clown_end = preload("res://scenes/game/clown_end.tscn")
+var shape_matching_1 = preload("res://scenes/game/shape_matching/shape_matching_1.tscn")
+var shape_matching_2 = preload("res://scenes/game/shape_matching/shape_matching_2.tscn")
+var shape_matching_3 = preload("res://scenes/game/shape_matching/shape_matching_3.tscn")
+var clown_end = preload("res://scenes/game/clown/clown_end.tscn")
 
 const PLAYER_MOVEMENT_COUNTER_MAX := 70
 const MIN_RANDOM_EVENT_TIME := 15.0

@@ -7,14 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://ce672q8mnvxuh" path="res://assets/models/simple_table/operating_table.tscn" id="4_ins1j"]
 [ext_resource type="PackedScene" uid="uid://dh26043n1si7d" path="res://assets/models/hobbyhorse/hobbyhorse.glb" id="5_umjxg"]
 [ext_resource type="PackedScene" uid="uid://bndnc0acednro" path="res://assets/models/door/door.glb" id="8_2crcs"]
+[ext_resource type="Script" path="res://scenes/game/clown/ClownControl.gd" id="8_qk12a"]
+[ext_resource type="Script" path="res://scenes/game/clown/ClownAudio.gd" id="9_henng"]
 [ext_resource type="Material" uid="uid://wbxo21w6ylv3" path="res://assets/models/door/door_mat.tres" id="9_yrkcg"]
-[ext_resource type="Script" path="res://scenes/game/ClownControl.gd" id="10_qo6ab"]
 [ext_resource type="PackedScene" uid="uid://68etf3dwhwqj" path="res://assets/models/chair/painted_wooden_chair_01_2k.glb" id="11_4r557"]
 [ext_resource type="PackedScene" uid="uid://dahhmspeudgg0" path="res://assets/models/deco/balloon.glb" id="12_1o3so"]
 [ext_resource type="PackedScene" uid="uid://ds8j88t8fgllm" path="res://assets/models/deco/teddy_bear.glb" id="13_wcy3v"]
 [ext_resource type="PackedScene" uid="uid://ccjaewgp6bver" path="res://assets/models/deco/the_cake_is_a_lie.glb" id="14_rhvxc"]
-[ext_resource type="PackedScene" uid="uid://d1kiqhdigdofv" path="res://scenes/game/clown_standing.tscn" id="15_abr13"]
-[ext_resource type="Script" path="res://scenes/game/ClownAudio.gd" id="16_pc5wc"]
+[ext_resource type="PackedScene" uid="uid://d1kiqhdigdofv" path="res://scenes/game/clown/clown_standing.tscn" id="15_q41yt"]
 [ext_resource type="AudioStream" uid="uid://3nsme0sibp8j" path="res://assets/background.ogg" id="17_bye0h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iyye"]
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.1, 0.9, 1, 2),
 "transitions": PackedFloat32Array(1.27456, 0.90125, 1.18921, 0.784584),
 "update": 0,
-"values": [Vector3(-0.175, 1.3, -1.73), Vector3(-0.175, 1.2, -1.73), Vector3(-0.175, 1.2, -1.73), Vector3(-0.175, 1.3, -1.73)]
+"values": [Vector3(-0.175, 0.8, -1.73), Vector3(-0.175, 0.7, -1.73), Vector3(-0.175, 0.7, -1.73), Vector3(-0.175, 0.8, -1.73)]
 }
 
 [sub_resource type="Animation" id="Animation_6lg2f"]
@@ -74,11 +74,44 @@ resource_name = "clown_show"
 length = 0.7
 tracks/0/type = "position_3d"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Decoration/ClownStanding")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.921, -0.819, -2.532, 0.3, 1, 0.921, -0.45, -2.532, 0.4, 1, 0.921, -0.45, -2.532, 0.7, 1, 0.921, -0.819, -2.532)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Decoration/ClownStanding:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Decoration/ClownStanding:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.819, -0.25, 0, 0.2, 0.3, -0.33, -0.3, -0.1, 0.2, -0.5, -0.8, -0.25, 0.3, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.7)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Decoration/ClownStanding:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3.80099, -0.25, 0, 0.25, 0, -2.91647, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48avq"]
 _data = {
@@ -115,7 +148,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.525137, 0, -2.29543e-08)
 
 [node name="Ceiling" type="StaticBody3D" parent="room_base"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.111, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.31779, 0)
 
 [node name="JoltConeTwistJoint3D" type="JoltConeTwistJoint3D" parent="room_base/Ceiling"]
 node_a = NodePath("..")
@@ -127,15 +160,8 @@ transform = Transform3D(0.999752, -0.022268, -2.26391e-14, 0.022268, 0.999752, 1
 can_sleep = false
 angular_damp = 0.2
 
-[node name="door" parent="." instance=ExtResource("8_2crcs")]
-transform = Transform3D(-4.40545e-08, 0, -1.04277, 0, 1.00785, 0, 1.00785, 0, -4.5581e-08, 0.788797, 1.05321, -2.16601)
-
-[node name="door_joined" parent="door" index="0"]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1.01619, 0, 0, 0)
-material_override = ExtResource("9_yrkcg")
-
 [node name="ClownControl" type="CanvasLayer" parent="."]
-script = ExtResource("10_qo6ab")
+script = ExtResource("8_qk12a")
 
 [node name="MarginContainer" type="MarginContainer" parent="ClownControl"]
 anchors_preset = 15
@@ -164,7 +190,7 @@ autowrap_mode = 3
 
 [node name="ClownAudio" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16999, 1.64285)
-script = ExtResource("16_pc5wc")
+script = ExtResource("9_henng")
 
 [node name="BackgroundNoise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_bye0h")
@@ -186,7 +212,7 @@ transform = Transform3D(0.735932, 0, -0.677056, 0, 1, 0, 0.677056, 0, 0.735932, 
 transform = Transform3D(0.0806083, 0, 0.0591802, 0, 0.1, 0, -0.0591802, 0, 0.0806083, -1.88284, 0.00226144, -0.122181)
 
 [node name="Balloon" parent="Decoration" instance=ExtResource("12_1o3so")]
-transform = Transform3D(0.005, 0, 2.32831e-10, 0, 0.005, 0, -2.32831e-10, 0, 0.005, -0.175, 1.3, -1.73)
+transform = Transform3D(0.005, 0, 2.32831e-10, 0, 0.005, 0, -2.32831e-10, 0, 0.005, -0.175, 0.8, -1.73)
 
 [node name="Teddy" parent="Decoration" instance=ExtResource("13_wcy3v")]
 transform = Transform3D(-0.105874, -2.86324e-09, 0.169678, 0.0238756, 0.19801, 0.0148977, -0.16799, 0.0281422, -0.104821, 1.58218, 0.0532905, -1.68544)
@@ -205,8 +231,8 @@ libraries = {
 }
 speed_scale = 0.5
 
-[node name="ClownStanding" parent="Decoration" instance=ExtResource("15_abr13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92102, -0.818844, -2.53195)
+[node name="ClownStanding" parent="Decoration" instance=ExtResource("15_q41yt")]
+transform = Transform3D(0.984765, 0, -0.173889, 0, 1, 0, 0.173889, 0, 0.984765, 0.996309, -0.819, -3.80099)
 
 [node name="Timer" type="Timer" parent="Decoration"]
 wait_time = 8.0
@@ -216,8 +242,15 @@ autostart = true
 [node name="painted_wooden_chair_01_2k" parent="Decoration" instance=ExtResource("11_4r557")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00398584, 0, 1.14554)
 
+[node name="door" parent="Decoration" instance=ExtResource("8_2crcs")]
+transform = Transform3D(-4.40545e-08, 0, -1.04277, 0, 1.00785, 0, 1.00785, 0, -4.5581e-08, 0.788797, 1.05321, -2.16601)
+
+[node name="door_joined" parent="Decoration/door" index="0"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1.01619, 0, 0, 0)
+material_override = ExtResource("9_yrkcg")
+
 [connection signal="action_triggered" from="ClownControl" to="." method="_on_clown_control_action_triggered"]
 [connection signal="timeout" from="Decoration/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="room_base"]
-[editable path="door"]
+[editable path="Decoration/door"]

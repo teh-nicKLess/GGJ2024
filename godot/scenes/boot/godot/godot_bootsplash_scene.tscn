@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cmmr5jbylu08i" path="res://scenes/boot/godot/godot_logo.tscn" id="3_e0rf4"]
 [ext_resource type="PackedScene" uid="uid://dv2y18ye8j7o0" path="res://scenes/main_menu_scene.tscn" id="4_n5qhh"]
 
-
 [node name="GodotBootsplashScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15

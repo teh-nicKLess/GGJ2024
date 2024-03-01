@@ -20,14 +20,14 @@ var _total_pitch = 0.0
 var _total_yaw = 0.0
 
 var grabbed_object : RigidBody3D = null
-var rotating_grabbed := false
+var is_rotating_grabbed := false
 var shift := false
 
 var object_dist_min = 0.3
 var object_dist_max = 2.0
 var object_rotation_speed = 0.02
 
-var snapping_active = false
+var is_snapping_active = false
 var unsnap_linear_threshold = 0.005
 
 # Called when the node enters the scene tree for the first time.
@@ -51,7 +51,7 @@ func _input(event):
 						else:
 							_grab_object()
 			MOUSE_BUTTON_RIGHT: # attempt to activate object rotation
-				rotating_grabbed = event.pressed
+				is_rotating_grabbed = event.pressed
 			MOUSE_BUTTON_WHEEL_UP: # attempt to push object away
 				if event.pressed and grabbed_object: _push_grabbed()
 			MOUSE_BUTTON_WHEEL_DOWN: # attempt to pull object towards player
@@ -65,14 +65,14 @@ func _input(event):
 
 # Updates mouselook and movement every frame
 func _process(delta):
-	if not rotating_grabbed:
+	if not is_rotating_grabbed:
 		_update_mouselook()
 		_update_aim_dot()
 
 
 func _physics_process(delta):
 	if grabbed_object:
-		if rotating_grabbed:
+		if is_rotating_grabbed:
 			_rotate_grabbed()
 		else:
 			_update_grabbed_position(delta)
@@ -128,12 +128,12 @@ func _release_object():
 	#grabbed_object.set_freeze_enabled(false)
 	grabbed_object.set_gravity_scale(1.0)
 	grabbed_object = null
-	rotating_grabbed = false
+	is_rotating_grabbed = false
 
 
 func snap_object_to_target(snap_position : Vector3):
 	if grabbed_object:
-		snapping_active = true
+		is_snapping_active = true
 		grabbed_object.set_global_position(snap_position + Vector3(0, 0.02, 0))
 
 
@@ -142,9 +142,9 @@ func _update_grabbed_position(delta):
 	var old_position = grabbed_object.global_position
 	grabbed_object.move_and_collide(target_pos - grabbed_object.global_position)
 	
-	if snapping_active:
+	if is_snapping_active:
 		if grabbed_object.global_position.distance_to(old_position) > unsnap_linear_threshold:
-			snapping_active = false
+			is_snapping_active = false
 		else:
 			grabbed_object.global_position.x = old_position.x
 			grabbed_object.global_position.z = old_position.z
@@ -160,9 +160,9 @@ func _rotate_grabbed():
 		grabbed_object.rotate_y(_last_mouse_movement.x * object_rotation_speed)
 	_last_mouse_movement = Vector2(0, 0)
 	
-	#if snapping_active:
+	#if is_snapping_active:
 		#if grabbed_object.global_rotation.dot(old_rotation) > (1.0 - unsnap_angular_threshold):
-			#snapping_active = false
+			#is_snapping_active = false
 		#else:
 			#grabbed_object.set_global_rotation(old_rotation)
 

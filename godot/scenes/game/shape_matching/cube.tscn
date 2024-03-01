@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn4h1fkholod5"]
+
+[ext_resource type="PackedScene" uid="uid://cfvic2b3cjqcb" path="res://assets/models/shape_matching/cube.glb" id="1_31tew"]
+[ext_resource type="Texture2D" uid="uid://c8vfbly0qfg1n" path="res://assets/models/shape_matching/cube_Material.032_BaseColor.png" id="2_yxrnx"]
+[ext_resource type="Texture2D" uid="uid://qyto5d3mqke" path="res://assets/models/shape_matching/cube_Material.032_Metallic.png" id="3_kax1x"]
+[ext_resource type="Texture2D" uid="uid://ckv3xg6deh8mn" path="res://assets/models/shape_matching/cube_Material.032_Normal.png" id="4_5a3tr"]
+[ext_resource type="Texture2D" uid="uid://cf6cvxjy0wnx6" path="res://assets/models/shape_matching/cube_Material.032_Roughness.png" id="5_0j81x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx2fn"]
+albedo_texture = ExtResource("2_yxrnx")
+metallic = 1.0
+metallic_texture = ExtResource("3_kax1x")
+roughness_texture = ExtResource("5_0j81x")
+normal_enabled = true
+normal_texture = ExtResource("4_5a3tr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhgl1"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[node name="Cube" type="RigidBody3D"]
+mass = 0.05
+freeze_mode = 1
+continuous_cd = true
+
+[node name="cube" parent="." instance=ExtResource("1_31tew")]
+
+[node name="Cube_002" parent="cube" index="0"]
+material_override = SubResource("StandardMaterial3D_vx2fn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mhgl1")
+
+[editable path="cube"]
