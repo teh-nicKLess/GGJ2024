@@ -17,7 +17,7 @@ func flicker():
 	should_flicker = true
 	$AnimationPlayer.play("lights_off")
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	await get_tree().create_timer(0.5).timeout
 	if should_flicker:
 		$AnimationPlayer.play("lights_on")

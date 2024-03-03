@@ -15,8 +15,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 
 [node name="AimDot" type="Sprite3D" parent="Camera3D/RayCast3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.31161, 0)
+visible = false
 gi_mode = 0
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0, 0, 0.784314)
 pixel_size = 0.0002
 texture = ExtResource("2_evxpd")
 

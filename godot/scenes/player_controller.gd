@@ -19,6 +19,8 @@ var _last_mouse_movement = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
 var _total_yaw = 0.0
 
+var _is_game_on := false
+
 var grabbed_object : RigidBody3D = null
 var is_rotating_grabbed := false
 var shift := false
@@ -30,9 +32,11 @@ var object_rotation_speed = 0.02
 var is_snapping_active = false
 var unsnap_linear_threshold = 0.005
 
-# Called when the node enters the scene tree for the first time.
+
+# Set up for mouse look and connect to room scene signal for the blocking of user interaction 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	%RoomScene.connect("is_game_on_switched", _switch_is_game_on)
 
 
 func _input(event):
@@ -44,7 +48,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT: # attempt to grab object
-				if %RoomScene.game_is_on:
+				if _is_game_on:
 					if event.pressed:
 						if grabbed_object:
 							_release_object()
@@ -64,12 +68,13 @@ func _input(event):
 
 
 # Updates mouselook and movement every frame
-func _process(delta):
+func _process(_delta):
 	if not is_rotating_grabbed:
 		_update_mouselook()
 		_update_aim_dot()
 
 
+# Moves or rotates currently held opbject
 func _physics_process(delta):
 	if grabbed_object:
 		if is_rotating_grabbed:
@@ -80,8 +85,6 @@ func _physics_process(delta):
 
 # Updates mouse look
 func _update_mouselook():
-	# Only rotates mouse if the mouse is captured
-	#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 	
 	_last_mouse_movement *= look_sensitivity
 	var yaw = _last_mouse_movement.x
@@ -99,6 +102,9 @@ func _update_mouselook():
 	camera.rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
 
 
+# Updates the red laser dot that shows where the player is currently looking to
+# facilitate interaction with objects
+# TODO: SpringArm3D has a similar built-in functionality. Might be a bit more performant.
 func _update_aim_dot():
 	raycast.force_raycast_update()
 	if not raycast.is_colliding() or grabbed_object:
@@ -106,10 +112,10 @@ func _update_aim_dot():
 		aim_dot.set_visible(false)
 	else:
 		# Update aim dot
-		aim_dot.set_visible(true)
+		aim_dot.set_visible(_is_game_on)
 		var ray_position = raycast.get_collision_point()
 		var ray_normal = raycast.get_collision_normal()
-		aim_dot.global_position = ray_position + 0.002 * ray_normal
+		aim_dot.global_position = ray_position + 0.003 * ray_normal
 		aim_dot.global_rotation = ray_normal.rotated(Vector3(0,0,1), PI/2.0)
 
 
@@ -151,7 +157,7 @@ func _update_grabbed_position(delta):
 
 
 func _rotate_grabbed():
-	var old_rotation = grabbed_object.global_rotation
+	#var old_rotation = grabbed_object.global_rotation
 	grabbed_object.rotate_x(_last_mouse_movement.y * object_rotation_speed)
 	
 	if shift:
@@ -167,10 +173,15 @@ func _rotate_grabbed():
 			#grabbed_object.set_global_rotation(old_rotation)
 
 
-
 func _pull_grabbed():
 	object_target.position.z = clamp(object_target.position.z + 0.1, -object_dist_max, -object_dist_min)
 
 
 func _push_grabbed():
 	object_target.position.z = clamp(object_target.position.z - 0.1, -object_dist_max, -object_dist_min)
+
+
+func _switch_is_game_on(new_state : bool) ->  void:
+	_is_game_on = new_state
+	if not _is_game_on and grabbed_object:
+		_release_object()

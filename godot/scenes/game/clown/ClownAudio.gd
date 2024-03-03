@@ -12,9 +12,6 @@ func _ready() -> void:
 	var file = FileAccess.get_file_as_string("res://settings/clown_audio.json")
 	subs2res = JSON.parse_string(file)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func dir_contents(path):
 	var audio_files = []

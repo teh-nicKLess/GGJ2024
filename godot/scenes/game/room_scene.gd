@@ -1,5 +1,7 @@
 extends Node3D
 
+signal is_game_on_switched
+
 @onready var clown_control: CanvasLayer = $ClownControl
 
 const cheats_enabled = true
@@ -17,7 +19,8 @@ var waiting_for_player_movement := ""
 var player_movement_counter := 0
 var random_event_timer := 0.0
 var random_event_type := ""
-var game_is_on := false
+var is_game_on := false
+var is_playing_end_scene := false
 var level_timeout_timer := 0.0
 var current_puzzle : Node3D = null
 
@@ -36,7 +39,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 
-	if game_is_on:
+	if is_game_on:
 		random_event_timer -= delta
 		level_timeout_timer -= delta * (16.0 if Input.is_key_pressed(KEY_SPACE) else 1.0)
 		if random_event_timer <= 0:
@@ -62,13 +65,17 @@ func _input(event):
 				handle_box_hit()
 			if event.keycode == KEY_S:
 				handle_one_solved()
-			if event.keycode == KEY_0:
-				handle_level_0_finished()
 			if event.keycode == KEY_1:
-				handle_level_1_finished()
+				clown_control.clear_queue_debug_only()
+				handle_level_0_finished()
 			if event.keycode == KEY_2:
+				clown_control.clear_queue_debug_only()
+				handle_level_1_finished()
+			if event.keycode == KEY_3:
+				clown_control.clear_queue_debug_only()
 				handle_level_2_finished()
 			if event.keycode == KEY_9:
+				clown_control.clear_queue_debug_only()
 				play_ending_scene()
 	
 	elif event is InputEventMouseMotion and waiting_for_player_movement:
@@ -95,8 +102,6 @@ func _on_clown_control_action_triggered(action: String) -> void:
 		prepare_level_2()
 	elif action == "level_2_ready":
 		handle_level_2_prepared()
-	elif action == "level_2_ready":
-		handle_level_2_prepared()
 
 func handle_box_hit():
 	# this must be called when the user hits the box with a brick instead of inserting it
@@ -115,30 +120,30 @@ func handle_double_fill():
 	play_ending_scene()
 
 func handle_level_0_finished():
-	game_is_on = false
+	_switch_is_game_on(false)
 	clown_control.trigger("level_0_finished")
 
 func handle_level_1_finished():
-	game_is_on = false
+	_switch_is_game_on(false)
 	clown_control.trigger("level_1_finished")
 
 func handle_level_2_finished():
-	game_is_on = false
+	_switch_is_game_on(false)	
 	clown_control.trigger("level_2_finished")
 	play_ending_scene()
 
 func handle_level_0_prepared():
-	game_is_on = true
+	_switch_is_game_on(true)
 	clown_control.reset_level(0, 300)
 	level_timeout_timer = 300
 
 func handle_level_1_prepared():
-	game_is_on = true
+	_switch_is_game_on(true)
 	clown_control.reset_level(1, 120)
 	level_timeout_timer = 120
 
 func handle_level_2_prepared():
-	game_is_on = true
+	_switch_is_game_on(true)
 	clown_control.reset_level(2, 20)
 	level_timeout_timer = 60
 
@@ -147,7 +152,7 @@ func _on_timer_timeout():
 
 func level_timed_out():
 	clown_control.trigger("timeout_kill")
-	game_is_on = false
+	_switch_is_game_on(false)
 	play_ending_scene()
 
 
@@ -210,6 +215,10 @@ func _prepare_level(number):
 		next.connect("level_solved", handle_level_2_finished)
 
 func play_ending_scene():
+	if is_playing_end_scene:
+		# Avoid double triggering of end scene
+		return
+	
 	$room_base/Ceiling/JoltConeTwistJoint3D/Lamp.flicker()
 
 	var table = find_child("operating_table")
@@ -223,8 +232,13 @@ func play_ending_scene():
 	chair.get_parent().remove_child(chair)
 	chair.queue_free()
 
+	is_playing_end_scene = true
+
 	var ending = clown_end.instantiate()
 	ending.rotate_y(PI/2.0)
 	add_child(ending)
 
 
+func _switch_is_game_on(new_state : bool) -> void:
+	is_game_on = new_state
+	is_game_on_switched.emit(new_state)

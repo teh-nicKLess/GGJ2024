@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	# update internals
 	level_timer += delta*time_multiplier
 	is_timing_out = false if expected_solving_time == 0 else (level_timer >= expected_solving_time)
-	expected_solved_count = level_timer / (expected_solving_time / 3)
+	expected_solved_count = int(level_timer * 3.0 / expected_solving_time)
 	if box_hit_count > 0:
 		box_hit_count -= (BOX_HIT_COOLDOWN * delta)
 	agitation_level = round(box_hit_count * AGITATION_FACTOR)
@@ -82,10 +82,10 @@ func _process(delta: float) -> void:
 			call_trigger(text_queue[0][1])
 			text_queue.remove_at(0)
 
-func reset_level(level: int, expected_solving_time: int):
+func reset_level(level: int, expected_time: int):
 	self.agitation_level = 0
 	self.solved_blocks_count = 0
-	self.expected_solving_time = expected_solving_time
+	self.expected_solving_time = expected_time
 	self.level_timer = 0
 	self.game_level = level
 
@@ -178,10 +178,15 @@ func call_trigger(action):
 	trigger(action)
 	emit_signal("action_triggered", action)
 
+
+func clear_queue_debug_only() -> void:
+	text_queue.clear()
+
+
 func _dbg_array_to_string(arr: Array) -> String:
-	var str = "["
+	var debug_string = "["
 	for e in arr:
-		str += str(e)
-		str += ","
-	str += "]"
-	return str
+		debug_string += str(e)
+		debug_string += ","
+	debug_string += "]"
+	return debug_string

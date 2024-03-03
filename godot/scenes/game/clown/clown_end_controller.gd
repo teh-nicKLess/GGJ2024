@@ -10,6 +10,7 @@ var cam_animplayer : AnimationPlayer = $cam_aniplayer
 @onready
 var credits : Control = $credits
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Switch to cutscene camera
@@ -20,7 +21,3 @@ func _ready():
 	
 	var fade_tween = get_tree().create_tween()
 	fade_tween.tween_property(credits, "modulate", Color.WHITE, 3.0).set_delay(10.0)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
