@@ -57,7 +57,7 @@ func _input(event):
 
 	if event is InputEventKey and event.pressed:
 		# Toggle display of debug data
-		if event.keycode == KEY_H:
+		if event.is_action_pressed("toggle_debug_info"):
 			$ClownControl/MarginContainer/Debug.set_visible(not $ClownControl/MarginContainer/Debug.is_visible()) 
 		# this is for debugging - it emulates the events created by interaction with the bricks and the box
 		if cheats_enabled:

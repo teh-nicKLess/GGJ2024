@@ -19,8 +19,8 @@ func dir_contents(path):
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
-		if file_name.ends_with(".ogg"):
-			audio_files.append(file_name)
+		if file_name.ends_with(".ogg.import"):
+			audio_files.append(file_name.split(".import")[0])
 		file_name = dir.get_next()
 	return audio_files
 

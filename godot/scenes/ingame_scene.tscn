@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=13 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
 [ext_resource type="PackedScene" uid="uid://cnth0gfsj10u4" path="res://scenes/game/room_scene.tscn" id="2_bppc2"]
 [ext_resource type="PackedScene" uid="uid://bvssbxssd3kk4" path="res://scenes/player_controller.tscn" id="2_hckl8"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
-[ext_resource type="Script" path="res://scenes/node_example.gd" id="3_a5686"]
 [ext_resource type="Texture2D" uid="uid://bhwkhp1fdqxr3" path="res://assets/2d/dust_particle.png" id="3_wvv2r"]
 
 [sub_resource type="Environment" id="Environment_tjssu"]
@@ -66,10 +65,6 @@ draw_pass_1 = SubResource("QuadMesh_wqmn2")
 
 [node name="RoomScene" parent="." instance=ExtResource("2_bppc2")]
 unique_name_in_owner = true
-
-[node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
-visible = false
-script = ExtResource("3_a5686")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

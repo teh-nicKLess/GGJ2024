@@ -175,6 +175,7 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="Debug" type="Label" parent="ClownControl/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 8
